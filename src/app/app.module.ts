@@ -7,15 +7,21 @@ import { AngularFireModule } from 'angularfire2';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IndexComponent } from './index/index.component';
 import { environment } from '../environments/environment';
-
-
+import {HeaderComponent} from './header/header.component';
+import {NavComponent} from './nav/nav.component';
+import {FooterComponent} from './footer/footer.component';
+import {LoginComponent} from './login/login.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent
+    HeaderComponent,
+    NavComponent,
+    FooterComponent,
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
