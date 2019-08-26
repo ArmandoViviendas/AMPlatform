@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
+  usuario=JSON.parse(localStorage.getItem('user'));
+  email = this.usuario.email;
   constructor() { }
 
   ngOnInit() {
