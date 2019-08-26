@@ -19,11 +19,15 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav float-right">
-                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar"><img src="assets/img/usuario.png" alt="avatar"><i></i></span></a>
+                        <li id="email_ide"><a>{{email}}</a></li>
+                        <li class="dropdown dropdown-user nav-item">
+                            <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar"><img src="assets/img/usuario.png" alt="avatar"><i></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="assets/img/usuario.png" alt="avatar"><span class="user-name text-bold-700 ml-1">Juan Fuentes</span></span></a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-power"></i> Cerrar Sesión</a>
+                                <div class="arrow_box_right">
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#"  (click)="authService.SignOut()"><i class="ft-power"></i> Cerrar Sesión</a>
                                 </div>
                             </div>
                         </li>
