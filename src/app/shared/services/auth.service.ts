@@ -41,7 +41,7 @@ export class AuthService {
       .then((result) => {
         this.ngZone.run(() => {
           console.log("Dentro de donde debe de estar");
-          //this.router.navigate(['dashboard']);
+          this.router.navigate(['dashboard']);
           this.afAuth.auth.currentUser.sendEmailVerification();
         });
         console.log("login");
