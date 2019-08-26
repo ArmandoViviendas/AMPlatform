@@ -15,9 +15,10 @@ export class LoginComponent implements OnInit {
   constructor(public authService: AuthService,public afAuth: AngularFireAuth) { }
 
   ngOnInit() {
-    /*localStorage.removeItem('user');
+    //localStorage.removeItem('user');
+    //localStorage.clear();
     console.log(localStorage.getItem('user'));
-    console.log(console.log(this.authService.isLoggedIn));*/
+    /*console.log(console.log(this.authService.isLoggedIn));*/
     this.authService.GetTheCurrentUser();
 
     //console.log(user);

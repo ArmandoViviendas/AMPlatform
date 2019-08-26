@@ -24,8 +24,8 @@
                             <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar"><img src="assets/img/usuario.png" alt="avatar"><i></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="arrow_box_right">
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a>
+                                    
+                                    <a class="dropdown-item" href="/EditarPersonal"><i class="ft-user"></i> Editar Perfil</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#"  (click)="authService.SignOut()"><i class="ft-power"></i> Cerrar Sesión</a>
                                 </div>
@@ -47,7 +47,7 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="active"><a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
             </li>
-            <li class=" nav-item"><a href="charts.html"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Charts</span></a>
+            <li class=" nav-item"><a href="charts.html"><i><fa-icon [icon]="faCoffee"></fa-icon></i><span class="menu-title" data-i18n="">Charts</span></a>
             </li>
             <li class=" nav-item"><a href="icons.html"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Icons</span></a>
             </li>

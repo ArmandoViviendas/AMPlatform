@@ -139,6 +139,7 @@ export class AuthService {
   GetTheCurrentUser() {
     this.afAuth.auth.onAuthStateChanged(function(user) {
       //this.SetUserData(user);
+      console.log("Dentro");
       console.log(user);
     });
   }

@@ -6,7 +6,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireModule } from 'angularfire2';
 
 import { AuthService } from "./shared/services/auth.service";
-
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { FooterComponent} from './footer/footer.component';
 import { LoginComponent} from './login/login.component';
 import { DashboardComponent} from './dashboard/dashboard.component';
 import { PersonalComponent } from './personal/personal.component';
+import { EditarPersonalComponent } from './editar-personal/editar-personal.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +27,16 @@ import { PersonalComponent } from './personal/personal.component';
     FooterComponent,
     LoginComponent,
     DashboardComponent,
-    PersonalComponent
+    PersonalComponent,
+    EditarPersonalComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

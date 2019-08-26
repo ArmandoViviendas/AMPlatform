@@ -5710,7 +5710,6 @@ input[type='button'].btn-block
     display:    -moz-box;
     display: -ms-flexbox;
     display:         flex;
-
     padding: .5rem 1rem; 
 
     -webkit-flex-wrap: wrap;

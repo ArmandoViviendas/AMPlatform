@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-nav',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
   usuario=JSON.parse(localStorage.getItem('user'));
   email = this.usuario.email;
+  faCoffee = faCoffee;
   constructor() { }
 
   ngOnInit() {
