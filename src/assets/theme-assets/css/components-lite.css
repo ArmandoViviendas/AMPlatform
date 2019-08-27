@@ -4,14 +4,7 @@
     width: 100%; 
     height: 100%;
 }
-#html #body
-{
-    height: 100%;
 
-    background-color: #f4f5fa;
-
-    direction: ltr;
-}
 #html #body.fixed-navbar
 {
     padding-top: 5rem;
@@ -1196,18 +1189,7 @@ footer.footer-dark
 
     text-overflow: ellipsis;
 }
-.navigation li .is-hidden
-{
-    /* transition: all 250ms ease-in;
-            transform: scale(0);
-            opacity: 0; */
-}
-.navigation li .is-shown
-{
-    /* transition: all 250ms ease-in;
-            transform: scale(1);
-            opacity: 1; */
-}
+
 .navigation li.disabled a
 {
     cursor: not-allowed;
@@ -4560,10 +4542,6 @@ footer.footer-dark
     head
     {
         font-family: 'lg 992px';
-    }
-    body:after
-    {
-        /*content: 'lg - min-width: 992px';*/
     }
 }
 

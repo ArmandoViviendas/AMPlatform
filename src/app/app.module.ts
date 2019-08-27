@@ -11,24 +11,22 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { HeaderComponent} from './header/header.component';
 import { NavComponent} from './nav/nav.component';
-import { FooterComponent} from './footer/footer.component';
 import { LoginComponent} from './login/login.component';
 import { DashboardComponent} from './dashboard/dashboard.component';
 import { PersonalComponent } from './personal/personal.component';
 import { EditarPersonalComponent } from './editar-personal/editar-personal.component';
+import { CorporativoComponent } from './corporativo/corporativo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     NavComponent,
-    FooterComponent,
     LoginComponent,
     DashboardComponent,
     PersonalComponent,
-    EditarPersonalComponent
+    EditarPersonalComponent,
+    CorporativoComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
