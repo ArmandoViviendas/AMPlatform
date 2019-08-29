@@ -3,6 +3,9 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faBuilding } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
+import { faCopyright } from "@fortawesome/free-solid-svg-icons"
+
+
 
 @Component({
   selector: 'app-nav',
@@ -16,6 +19,7 @@ export class NavComponent implements OnInit {
   faBuilding = faBuilding;
   faSearch = faSearch;
   faWindowClose = faWindowClose;
+  faCopyright = faCopyright;
   constructor() { }
 
   ngOnInit() {

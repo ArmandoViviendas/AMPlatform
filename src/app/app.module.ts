@@ -1,5 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule, ɵINTERNAL_BROWSER_PLATFORM_PROVIDERS } from '@angular/platform-browser';
+import { ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core'; //Permite usar los componentes de bootstrap
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -17,6 +20,11 @@ import { DashboardComponent} from './dashboard/dashboard.component';
 import { PersonalComponent } from './personal/personal.component';
 import { EditarPersonalComponent } from './editar-personal/editar-personal.component';
 import { CorporativoComponent } from './corporativo/corporativo.component';
+import { MarcasComponent } from './marcas/marcas.component';
+import { MarcasFormComponent } from './marcas-form/marcas-form.component';
+import { ProductosComponent } from './productos/productos.component';
+import { ProductosFormComponent } from './productos-form/productos-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +34,11 @@ import { CorporativoComponent } from './corporativo/corporativo.component';
     DashboardComponent,
     PersonalComponent,
     EditarPersonalComponent,
-    CorporativoComponent
+    CorporativoComponent,
+    MarcasComponent,
+    MarcasFormComponent,
+    ProductosComponent,
+    ProductosFormComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -34,9 +46,14 @@ import { CorporativoComponent } from './corporativo/corporativo.component';
     AngularFireAuthModule,
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MarcasFormComponent,ProductosFormComponent],
 })
 export class AppModule { }
