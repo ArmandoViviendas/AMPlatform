@@ -1,15 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import { CorporativoService } from '../shared/services/corporativos/corporativo.service';
+import { CInterface } from '../models/corporativo';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-corporativo',
+  selector: 'app-corporativo', 
   templateUrl: './corporativo.component.html',
   styleUrls: ['./corporativo.component.css']
 })
 export class CorporativoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private corporativoS: CorporativoService) {}
+  private corporativo: CInterface[];
+  
 
   ngOnInit() {
+    this.getListCorporativos();
   }
 
+  getListCorporativos() {
+    this.corporativoS.getAllCorporativos().subscribe( response  => {
+      this.corporativo = response;
+    })
+  };
+
+  onDeleteCorporativo(idC: string) {
+    const confirmacion = confirm('estas seguro?');
+    if(confirmacion){
+      this.corporativoS.deleteCorporativo(idC);
+    }
+  }
+
+  onPreUpdateCorporativo(corporativo: CInterface){
+    this.corporativoS.selectedCorporativo = Object.assign({}, corporativo);
+  }
 }
