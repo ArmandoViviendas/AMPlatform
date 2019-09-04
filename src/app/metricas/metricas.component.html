@@ -1,0 +1,56 @@
+<div class="loading" lang="en" data-textdirection="ltr" id="html">
+        <div class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns" id="body">
+        <app-nav></app-nav>
+        <div class="app-content content">
+            <div class="content-wrapper">
+                <div class="content-wrapper-before"></div>
+                <div class="content-header row">
+                    <div class="content-header-left col-md-4 col-12 mb-2">
+                        <h3 class="content-header-title">Métricas</h3>
+                    </div>
+                </div>
+                <div class="content-body">
+                    <section id="global-settings" class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+    
+                                    <select>
+                                            <option [ngValue]="plan" ></option>
+                                    </select>
+                                    
+                                <button class="btn btn-primary" (click)="clickAddMarca()"style="float: right;">Agregar métrica</button>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Métrica</th>
+                <th>Tipo</th>
+                <th>Estatus</th>
+                <th>Repetir</th>
+                <th>Acciones</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let marca of marcas, let index = index">
+                <td [ngClass]="{'done': marca.done, 'not-done': !marca.done}"></td>
+                <td>
+                    <button class="btn btn-primary" (click)="handleEditClick(marca)">Editar</button>
+                    <button class="btn btn-danger" (click)="handleDeleteClick(marca.id, index)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+            </div>
+        </div>
+        </div>
+        </div>
+        
+    
