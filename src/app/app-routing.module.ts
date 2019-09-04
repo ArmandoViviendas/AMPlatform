@@ -7,6 +7,7 @@ import { EditarPersonalComponent } from './editar-personal/editar-personal.compo
 import { CorporativoComponent } from './corporativo/corporativo.component';
 import { MarcasComponent } from './marcas/marcas.component';
 import { ProductosComponent } from './productos/productos.component';
+import { MetricasComponent } from './metricas/metricas.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent,canActivate: [AuthGuard]},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'EditarPersonal', component:EditarPersonalComponent},
   {path: 'Corporativo', component:CorporativoComponent},
   {path: 'Marcas', component:MarcasComponent},
-  {path: 'Productos', component:ProductosComponent}
+  {path: 'Productos', component:ProductosComponent},
+  {path: 'Metricas', component:MetricasComponent}
 ];
 
 @NgModule({

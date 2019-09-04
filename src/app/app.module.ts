@@ -25,6 +25,8 @@ import { MarcasFormComponent } from './marcas-form/marcas-form.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ProductosFormComponent } from './productos-form/productos-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MetricasComponent } from './metricas/metricas.component';
+import { MetricasFormComponent } from './metricas-form/metricas-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MarcasComponent,
     MarcasFormComponent,
     ProductosComponent,
-    ProductosFormComponent
+    ProductosFormComponent,
+    MetricasComponent,
+    MetricasFormComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -54,6 +58,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
-  entryComponents: [MarcasFormComponent,ProductosFormComponent],
+  entryComponents: [MarcasFormComponent,ProductosFormComponent,ProductosComponent],
 })
 export class AppModule { }
