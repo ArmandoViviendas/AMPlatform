@@ -15,6 +15,28 @@
                                 <h4 class="card-title">Plan</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h1 for="Corporativo">Corporativos</h1>
+                                    <select class="form-control" [(ngModel)]="selectedCorporativo" (change)="getListClientes()">
+                                        <option selected>Seleccionar Corporativo</option>
+                                        <option *ngFor="let corp of corporativo" [ngValue]="corp.idC">
+                                            {{corp.corporativodsc}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <h1 for="Cliente">Cliente</h1>
+                                    <select class="form-control" [(ngModel)]="selectedCliente" (change)="getListPlan()">
+                                        <option selected>Seleccionar Cliente</option>
+                                        <option *ngFor="let cli of clienteI" [ngValue]="cli.idC">
+                                            {{cli.clientedsc}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="card-content">
                                 <div class="card-body">
                                     <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#ModalPlan">Agregar</button>

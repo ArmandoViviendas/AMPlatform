@@ -46,7 +46,8 @@ import { ProyectoComponent } from './proyecto/proyecto.component';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

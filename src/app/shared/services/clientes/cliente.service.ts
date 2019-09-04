@@ -21,20 +21,20 @@ export class ClienteService {
   public selectedCliente: ClienteInterface = {
     idC: null
   };
-
-  getAllClientes() {
+  
+  getAllClientes(corp:[]) {
     return this.clientes = this.clienteCollection.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as ClienteInterface;
         data.idC = action.payload.doc.id;
         return data;
-      });
+      }).filter(item => item.idCorporativo == corp.idC);
     }));
   };
 
-  addCliente(cliente: ClienteInterface): void {
-    this.clienteCollection.add(cliente);
+  addCliente(cliente: ClienteInterface, corp: []): void {
+    this.clienteCollection.add(cliente, corp);
   };
   updateCliente(cliente: ClienteInterface): void {
     let idC = cliente.idC;

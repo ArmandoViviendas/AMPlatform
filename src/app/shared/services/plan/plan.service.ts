@@ -22,14 +22,15 @@ export class PlanService {
     idP: null
   };
 
-  getAllPlan(){
+  getAllPlan(cli: string){
+    console.log(cli);
     return this.plans = this.planCollection.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as PlanInterface;
         data.idP = action.payload.doc.id;
         return data;
-      });
+      }).filter(item => item.idcliente == cli);
     }));
   }
 

@@ -15,6 +15,17 @@
                             <h4 class="card-title">Cliente</h4>
                             <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                         </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h1 for="Corporativo">Corporativos</h1>
+                                <select class="form-control" [(ngModel)]="selectedValue" (change)="getListClientes()">
+                                    <option selected>Seleccionar Corporativo</option>
+                                    <option *ngFor="let corp of corporativo" [ngValue]="corp">
+                                        {{corp.corporativodsc}}
+                                    </option>
+                                </select>          
+                            </div>     
+                        </div>
                         <div class="card-content">
                             <div class="card-body">
                                 <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#ModalCliente">Agregar</button>

@@ -1,6 +1,7 @@
 export interface ClienteInterface {
     idC?: string;
-    idcorporativo?: string;
+    idCorporativo?: string;
+    corporativodsc?: string;
     clientedsc?: string;
     activo?: boolean;
 }
