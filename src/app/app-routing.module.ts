@@ -1,13 +1,19 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent} from './dashboard/dashboard.component';
 import { LoginComponent} from './login/login.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { EditarPersonalComponent } from './editar-personal/editar-personal.component';
 import { CorporativoComponent } from './corporativo/corporativo.component';
+
 import { MarcasComponent } from './marcas/marcas.component';
 import { ProductosComponent } from './productos/productos.component';
 import { MetricasComponent } from './metricas/metricas.component';
+
+import { ClienteComponent } from './cliente/cliente.component';
+import { PlanComponent } from './plan/plan.component';
+import { ProyectoComponent } from './proyecto/proyecto.component';
+
 
 const routes: Routes = [
   {path: '', component:LoginComponent,canActivate: [AuthGuard]},
@@ -17,7 +23,11 @@ const routes: Routes = [
   {path: 'Corporativo', component:CorporativoComponent},
   {path: 'Marcas', component:MarcasComponent},
   {path: 'Productos', component:ProductosComponent},
-  {path: 'Metricas', component:MetricasComponent}
+  {path: 'Metricas', component:MetricasComponent},
+  {path: 'Cliente', component:ClienteComponent},
+  {path: 'Plan', component:PlanComponent},
+  {path: 'Proyecto', component:ProyectoComponent}
+
 ];
 
 @NgModule({

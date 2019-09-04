@@ -1,4 +1,3 @@
-
 <div class="loading" lang="en" data-textdirection="ltr" id="html">
     <div class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns" id="body">
         <app-nav></app-nav>
@@ -13,28 +12,39 @@
                 <div class="content-body">
                     <section id="global-settings" class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Corporativo</h4>
+                            <h4 class="card-title">Cliente</h4>
                             <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h1 for="Corporativo">Corporativos</h1>
+                                <select class="form-control" [(ngModel)]="selectedValue" (change)="getListClientes()">
+                                    <option selected>Seleccionar Corporativo</option>
+                                    <option *ngFor="let corp of corporativo" [ngValue]="corp">
+                                        {{corp.corporativodsc}}
+                                    </option>
+                                </select>          
+                            </div>     
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#ModalCorporativo">Agregar</button>
+                                <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#ModalCliente">Agregar</button>
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th scope="col" >#</th>
-                                            <th scope="col">Corporativo</th>
+                                            <th scope="col">Cliente</th>
                                             <th scope="col">Activo</th>
                                             <th colspan="2" scope="col">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let corp of corporativo"> 
-                                            <th scope="row">{{corp.idC}}</th>
-                                            <td>{{corp.corporativodsc}}</td>
-                                            <td>{{corp.activo}}</td>
-                                            <td><button class="btn btn-primary" (click)=onPreUpdateCorporativo(corp) data-toggle="modal" data-target="#ModalCorporativo">Editar</button></td>
-                                            <td><button class="btn btn-danger" (click)="onDeleteCorporativo(corp.idC)">Eliminar</button></td>
+                                        <tr *ngFor="let cli of clienteI"> 
+                                            <th scope="row">{{cli.idC}}</th>
+                                            <td>{{cli.clientedsc}}</td>
+                                            <td>{{cli.activo}}</td>
+                                            <td><button class="btn btn-primary" (click)=onPreUpdateCliente(cli) data-toggle="modal" data-target="#ModalCliente">Editar</button></td>
+                                            <td><button class="btn btn-danger" (click)="onDeleteCliente(cli.idC)">Eliminar</button></td>
                                         </tr>
                                     </tbody>
                                 </table>

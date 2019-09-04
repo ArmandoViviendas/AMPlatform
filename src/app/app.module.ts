@@ -2,7 +2,6 @@ import { BrowserModule, ɵINTERNAL_BROWSER_PLATFORM_PROVIDERS } from '@angular/p
 import { ReactiveFormsModule} from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core'; //Permite usar los componentes de bootstrap
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -19,6 +18,7 @@ import { LoginComponent} from './login/login.component';
 import { DashboardComponent} from './dashboard/dashboard.component';
 import { PersonalComponent } from './personal/personal.component';
 import { EditarPersonalComponent } from './editar-personal/editar-personal.component';
+
 import { CorporativoComponent } from './corporativo/corporativo.component';
 import { MarcasComponent } from './marcas/marcas.component';
 import { MarcasFormComponent } from './marcas-form/marcas-form.component';
@@ -27,6 +27,11 @@ import { ProductosFormComponent } from './productos-form/productos-form.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MetricasComponent } from './metricas/metricas.component';
 import { MetricasFormComponent } from './metricas-form/metricas-form.component';
+
+import { ModalComponent } from './modal/modal.component';
+import { ClienteComponent } from './cliente/cliente.component';
+import { PlanComponent } from './plan/plan.component';
+import { ProyectoComponent } from './proyecto/proyecto.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +47,11 @@ import { MetricasFormComponent } from './metricas-form/metricas-form.component';
     ProductosComponent,
     ProductosFormComponent,
     MetricasComponent,
-    MetricasFormComponent
+    MetricasFormComponent,
+    ModalComponent,
+    ClienteComponent,
+    PlanComponent,
+    ProyectoComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -51,13 +60,12 @@ import { MetricasFormComponent } from './metricas-form/metricas-form.component';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule,
     FormsModule,
-    NgbModule,
-    BrowserAnimationsModule
+    ReactiveFormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
   entryComponents: [MarcasFormComponent,ProductosFormComponent,ProductosComponent],
+
 })
 export class AppModule { }

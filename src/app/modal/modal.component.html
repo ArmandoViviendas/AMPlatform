@@ -1,0 +1,134 @@
+<div class="modal fade" id="ModalCorporativo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Corporativo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="formCorporativo" #formCorporativo="ngForm" (ngSubmit)="onSaveCorporativo(formCorporativo)">
+                    <input type="text" name="idC" [(ngModel)]="this.corporaticoS.selectedCorporativo.idC" hidden>
+                    <div class="form-group">
+                        <label for="corporativodsc" class="col-form-label">Corporativo:</label>
+                        <input type="text" class="form-control" name="corporativodsc" [(ngModel)]="this.corporaticoS.selectedCorporativo.corporativodsc">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Activo:</label><br>
+                        <select name="activo" class="form-control" [(ngModel)]="this.corporaticoS.selectedCorporativo.activo">
+                            <option value="true" selected>Si</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Cliente-->
+<div class="modal fade" id="ModalCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="formCliente" #formCliente="ngForm" (ngSubmit)="onSaveCliente(formCliente)">
+                    <input type="text" name="idC" [(ngModel)]="this.clienteservice.selectedCliente.idC" hidden>
+                    <div class="form-group">
+                        <label for="clientedsc" class="col-form-label">Cliente:</label>
+                        <input type="text" class="form-control" name="clientedsc" [(ngModel)]="this.clienteservice.selectedCliente.clientedsc">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Activo:</label><br>
+                        <select name="activo" class="form-control" [(ngModel)]="this.clienteservice.selectedCliente.activo">
+                            <option value="true" selected>Si</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Model Plan-->
+<div class="modal fade" id="ModalPlan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Plan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="formPlan" #formPlan="ngForm" (ngSubmit)="onSavePlan(formPlan)">
+                    <input type="text" name="idP" [(ngModel)]="this.planservice.selectedPlan.idP" hidden>
+                    <div class="form-group">
+                        <label for="plandsc" class="col-form-label">Plan:</label>
+                        <input type="text" class="form-control" name="plandsc" [(ngModel)]="this.planservice.selectedPlan.plandsc">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Activo:</label><br>
+                        <select name="activo" class="form-control" [(ngModel)]="this.planservice.selectedPlan.activo">
+                            <option value="true" selected>Si</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Model Proyecto-->
+<div class="modal fade" id="ModalProyecto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Proyecto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="formProyecto" #formProyecto="ngForm" (ngSubmit)="onSaveProyecto(formProyecto)">
+                    <input type="text" name="idP" [(ngModel)]="this.proyectoservice.selectedProyecto.idP" hidden>
+                    <div class="form-group">
+                        <label for="proyectodsc" class="col-form-label">Proyecto:</label>
+                        <input type="text" class="form-control" name="proyectodsc" [(ngModel)]="this.proyectoservice.selectedProyecto.proyectodsc">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Activo:</label><br>
+                        <select name="activo" class="form-control" [(ngModel)]="this.proyectoservice.selectedProyecto.activo">
+                            <option value="true" selected>Si</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
