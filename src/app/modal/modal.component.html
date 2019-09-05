@@ -137,34 +137,68 @@
 
 <!-- Modal Cadena-->
 <div class="modal fade" id="ModalCadena" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Agregar Cadena</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form name="formProyecto" #formCadena="ngForm" (ngSubmit)="onSaveCadena(formCadena)">
-                        <input type="text" name="idcadena" [(ngModel)]="this.cadenaservice.selectedCadena.idcadena" hidden>
-                        <div class="form-group">
-                            <label for="cadenadsc" class="col-form-label">Cadena:</label>
-                            <input type="text" class="form-control" name="cadenadsc" [(ngModel)]="this.cadenaservice.selectedCadena.cadenadsc">
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Activo:</label><br>
-                            <select name="activo" class="form-control" [(ngModel)]="this.cadenaservice.selectedCadena.activo">
-                                <option value="true" selected>Si</option>
-                                <option value="false">No</option>
-                            </select>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </div>
-                    </form>
-                </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Cadena</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="formCadena" #formCadena="ngForm" (ngSubmit)="onSaveCadena(formCadena)">
+                    <input type="text" name="idcadena" [(ngModel)]="this.cadenaservice.selectedCadena.idcadena" hidden>
+                    <div class="form-group">
+                        <label for="cadenadsc" class="col-form-label">Cadena:</label>
+                        <input type="text" class="form-control" name="cadenadsc" [(ngModel)]="this.cadenaservice.selectedCadena.cadenadsc">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Activo:</label><br>
+                        <select name="activo" class="form-control" [(ngModel)]="this.cadenaservice.selectedCadena.activo">
+                            <option value="true" selected>Si</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal Formato -->
+<div class="modal fade" id="ModalFormato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Formato</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="formFormato" #formFormato="ngForm" (ngSubmit)="onSaveFormato(formFormato)">
+                    <input type="text" name="idformato" [(ngModel)]="this.formatoservice.selectedFormato.idformato" hidden>
+                    <div class="form-group">
+                        <label for="formatodsc" class="col-form-label">Formato:</label>
+                        <input type="text" class="form-control" name="formatodsc" [(ngModel)]="this.formatoservice.selectedFormato.formatodsc">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Activo:</label><br>
+                        <select name="activo" class="form-control" [(ngModel)]="this.formatoservice.selectedFormato.activo">
+                            <option value="true" selected>Si</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

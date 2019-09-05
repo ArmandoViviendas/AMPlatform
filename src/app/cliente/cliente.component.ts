@@ -33,7 +33,6 @@ export class ClienteComponent implements OnInit {
     this.clienteservice.getAllClientes(this.selectedValue).subscribe( response  => {
       this.clienteI = response;
     })
-    
   };
 
  

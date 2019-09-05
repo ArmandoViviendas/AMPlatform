@@ -17,6 +17,7 @@ import { ProyectoComponent } from './proyecto/proyecto.component';
 
 /** tiendas */
 import { CadenaComponent } from './cadena/cadena.component';
+import { FormatoComponent } from './formato/formato.component';
 
 
 const routes: Routes = [
@@ -31,8 +32,8 @@ const routes: Routes = [
   {path: 'Cliente', component:ClienteComponent},
   {path: 'Plan', component:PlanComponent},
   {path: 'Proyecto', component:ProyectoComponent},
-  {path: 'Cadena', component:CadenaComponent}
-
+  {path: 'Cadena', component:CadenaComponent},
+  {path: 'Formato', component:FormatoComponent}
 ];
 
 @NgModule({
