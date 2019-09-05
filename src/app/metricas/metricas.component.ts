@@ -89,7 +89,7 @@ export class MetricasComponent implements OnInit {
     //Metricas
     metricas: MetricaViewModel[] = [];
     loadMetricas() {
-      this.metricaService.getMetricas().subscribe(response => {
+      this.metricaService.getMetricasPorPlan(this.planid).subscribe(response => {
         this.metricas = [];
         response.docs.forEach(value => {
           const data = value.data();
@@ -147,6 +147,8 @@ export class MetricasComponent implements OnInit {
     const modal = this.modalService.open(MetricasFormComponent);
     modal.componentInstance.planid = this.planid;
     modal.componentInstance.plandsc = this.plandsc;
+    modal.componentInstance.clienteid = this.clienteid;
+    modal.componentInstance.clientedsc = this.clientedsc;
     modal.result.then(
       this.handleModalMetricaFormClose.bind(this),
       this.handleModalMetricaFormClose.bind(this)
@@ -164,6 +166,24 @@ export class MetricasComponent implements OnInit {
         this.metricas[index] = response.metrica;
       }
     }
+  }
+
+  handleEditClick(metrica: MetricaViewModel) {
+    const modal = this.modalService.open(MetricasFormComponent);
+    modal.result.then(
+      this.handleModalMetricaFormClose.bind(this),
+      this.handleModalMetricaFormClose.bind(this)
+    )
+    modal.componentInstance.createMode = false;
+    modal.componentInstance.metrica = metrica;
+  }
+
+  handleDeleteClick(metricaId: string, index: number) {
+    this.metricaService.deleteMetrica(metricaId)
+      .then(() => {
+        this.metricas.splice(index, 1);
+      })
+      .catch(err => console.error(err));
   }
 
 }

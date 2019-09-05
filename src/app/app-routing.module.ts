@@ -15,6 +15,9 @@ import { PlanComponent } from './plan/plan.component';
 import { ProyectoComponent } from './proyecto/proyecto.component';
 
 
+import { MetricasProComponent} from './metricas-pro/metricas-pro.component';
+
+
 const routes: Routes = [
   {path: '', component:LoginComponent,canActivate: [AuthGuard]},
   {path: 'dashboard', component:DashboardComponent,canActivate: [AuthGuard]},
@@ -26,7 +29,8 @@ const routes: Routes = [
   {path: 'Metricas', component:MetricasComponent},
   {path: 'Cliente', component:ClienteComponent},
   {path: 'Plan', component:PlanComponent},
-  {path: 'Proyecto', component:ProyectoComponent}
+  {path: 'Proyecto', component:ProyectoComponent},
+  {path: 'MetricasProductos', component:MetricasProComponent}
 
 ];
 

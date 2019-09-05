@@ -33,6 +33,7 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { PlanComponent } from './plan/plan.component';
 import { ProyectoComponent } from './proyecto/proyecto.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { MetricasProComponent } from './metricas-pro/metricas-pro.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     ModalComponent,
     ClienteComponent,
     PlanComponent,
-    ProyectoComponent
+    ProyectoComponent,
+    MetricasProComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
