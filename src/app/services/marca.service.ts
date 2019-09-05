@@ -16,7 +16,6 @@ export class MarcaService {
   getMarcas(): Observable<firebase.firestore.QuerySnapshot> {
     return this.db.collection<Marca>(this.marcaCollectionName).get();
   }
-
   getMarcasPorPlan(planid: string): Observable<firebase.firestore.QuerySnapshot> {
     return this.db.collection<Marca>(this.marcaCollectionName, ref => ref.where('planid', "==" ,planid)).get();
   }

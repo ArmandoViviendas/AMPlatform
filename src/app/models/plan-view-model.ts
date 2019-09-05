@@ -1,6 +1,7 @@
 export interface PlanViewModel {
-    id?: string;
-    clienteid?: number,
+    idP?: string;
+    idcliente?: string;
+    clientedsc?: string;
     plandsc?: string;
-    activo?: number;
+    activo?: boolean;
 }

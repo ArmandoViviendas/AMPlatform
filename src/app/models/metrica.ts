@@ -3,8 +3,9 @@ export interface Metrica {
     planid?: string;
     plandsc?: string;
     clienteid?: string;
-    cleintedsc?: string;
+    clientedsc?: string;
     metricadsc?: string;
+    tipo?: string;
     datovalido?: string;
     activo?: string;
 }

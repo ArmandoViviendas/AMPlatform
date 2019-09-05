@@ -56,9 +56,10 @@ export class MarcasComponent implements OnInit {
           const data = value.data();
           const id = value.id;
           const plan: PlanViewModel = {
-            id: id,
-            clienteid: data.clienteid,
+            idP: id,
+            idcliente: data.idcliente,
             plandsc: data.plandsc,
+            clientedsc: data.clientedsc,
             activo: data.activo
           };
           this.planes.push(plan);
@@ -112,7 +113,7 @@ export class MarcasComponent implements OnInit {
   public ver(value): object {
     console.log(value);
     this.plan = value;
-    this.planid = this.plan.id;
+    this.planid = this.plan.idP;
     this.plandsc = this.plan.plandsc;
     this.loadMarcaPorplan();
     return value;

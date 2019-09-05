@@ -67,7 +67,6 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
-  entryComponents: [MarcasFormComponent,ProductosFormComponent,ProductosComponent],
-
+  entryComponents: [MarcasFormComponent,ProductosFormComponent,MetricasFormComponent],
 })
 export class AppModule { }

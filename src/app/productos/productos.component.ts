@@ -85,8 +85,8 @@ export class ProductosComponent implements OnInit {
             const data = value.data();
             const id = value.id;
             const plan: PlanViewModel = {
-              id: id,
-              clienteid: data.clienteid,
+              idP: id,
+              idcliente: data.idcliente,
               plandsc: data.plandsc,
               activo: data.activo
             };
@@ -152,7 +152,7 @@ export class ProductosComponent implements OnInit {
   public verP(value): object {
     console.log("Objeto plan",value);
     this.plan = value;
-    this.planid = this.plan.id;
+    this.planid = this.plan.idP;
     this.plandsc = this.plan.plandsc;
     this.loadMarcas();
     return value;

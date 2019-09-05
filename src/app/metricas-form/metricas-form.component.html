@@ -1,1 +1,26 @@
-<p>metricas-form works!</p>
+<div class="modal-header">
+        <h4 class="modal-title">{{createMode ? 'Crear Métrica' : 'Editar Métrica'}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="metricaForm" (ngSubmit)="saveMetrica()">
+      
+      
+          <div class="form-group">
+            <label for="metricadsc">Métrica*</label>
+            <input type="text" id="metricadsc" class="form-control" formControlName="metricadsc" />
+            <span style="color:Red;" *ngIf="metricaForm.controls['metricadsc'].touched && metricaForm.controls['metricadsc'].errors?.required">Campo
+              obligatorio.</span>
+          </div>
+      
+      
+      
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+        <button class="btn btn-primary" (click)="saveMetrica(planid,plandsc)" [disabled]="metricaForm.invalid">Guardar</button>
+      </div>
+      

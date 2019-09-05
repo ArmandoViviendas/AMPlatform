@@ -13,12 +13,26 @@
                     <section id="global-settings" class="card">
                         <div class="card-content">
                             <div class="card-body">
-    
-                                    <select>
-                                            <option [ngValue]="plan" ></option>
+
+                                    <select [(ngModel)]="selectedValueCorp" (change)="verC(selectedValueCorp)" style="margin-right: 30px;">
+                                            <option selected>Seleccione corporativo</option>
+                                            <option *ngFor="let corp of corporativo" [ngValue]="corp">
+                                                {{corp.corporativodsc}}
+                                            </option>
+                                    </select> 
+
+                                    <select [(ngModel)]="selectedValueCli" (change)="verClie(selectedValueCli)" style="margin-right: 30px;">
+                                            <option selected>Seleccione un cliente</option>
+                                            <option *ngFor="let cli of clienteI" [ngValue]="cli">{{cli.clientedsc}}</option>
                                     </select>
+
+                                    <select [(ngModel)]="selectedValuePla" (change)="verPla(selectedValuePla)" style="margin-right: 30px;">
+                                            <option selected>Seleccione un plan</option>
+                                            <option *ngFor="let plan of planes" [ngValue]="plan" >{{plan.plandsc}}</option>
+                                    </select>
+
                                     
-                                <button class="btn btn-primary" (click)="clickAddMarca()"style="float: right;">Agregar métrica</button>
+                                <button class="btn btn-primary" (click)="clickAddMetrica()"style="float: right;">Agregar métrica</button>
     
     <table class="table table-striped">
         <thead>
@@ -27,17 +41,19 @@
                 <th>Métrica</th>
                 <th>Tipo</th>
                 <th>Estatus</th>
-                <th>Repetir</th>
                 <th>Acciones</th>
     
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let marca of marcas, let index = index">
-                <td [ngClass]="{'done': marca.done, 'not-done': !marca.done}"></td>
+            <tr *ngFor="let metrica of metricas, let index = index">
+                <td [ngClass]="{'done': metrica.done, 'not-done': !metrica.done}">{{metrica.id}}</td>
+                <td [ngClass]="{'done': metrica.done, 'not-done': !metrica.done}">{{metrica.metricadsc}}</td>
+                <td [ngClass]="{'done': metrica.done, 'not-done': !metrica.done}">{{metrica.tipo}}</td>
+                <td [ngClass]="{'done': metrica.done, 'not-done': !metrica.done}">{{metrica.activo}}</td>
                 <td>
-                    <button class="btn btn-primary" (click)="handleEditClick(marca)">Editar</button>
-                    <button class="btn btn-danger" (click)="handleDeleteClick(marca.id, index)">Eliminar</button>
+                    <button class="btn btn-primary" (click)="handleEditClick(metrica)">Editar</button>
+                    <button class="btn btn-danger" (click)="handleDeleteClick(metrica.id, index)">Eliminar</button>
                 </td>
             </tr>
         </tbody>

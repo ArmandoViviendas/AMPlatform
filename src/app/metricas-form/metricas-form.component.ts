@@ -10,6 +10,7 @@ export class MetricasFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
