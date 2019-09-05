@@ -1,0 +1,65 @@
+<div class="loading" lang="en" data-textdirection="ltr" id="html">
+        <div class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns" id="body">
+        <app-nav></app-nav>
+        <div class="app-content content">
+            <div class="content-wrapper">
+                <div class="content-wrapper-before"></div>
+                <div class="content-header row">
+                    <div class="content-header-left col-md-4 col-12 mb-2">
+                        <h3 class="content-header-title">Productos</h3>
+                    </div>
+                </div>
+                <div class="content-body">
+                    <section id="global-settings" class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+
+                                    <select [(ngModel)]="selectedValueP" (change)="verP(selectedValueP)" style="margin-right: 30px;">
+                                            <option selected>Seleccione un plan</option>
+                                        <option *ngFor="let plan of planes" [ngValue]="plan">{{plan.plandsc}}</option>
+                                    </select>
+
+                                <select [(ngModel)]="selectedValue" (change)="ver(selectedValue)">
+                                        <option selected>Seleccione una marca</option>
+                                    <option *ngFor="let marca of marcas" [ngValue]="marca">{{marca.marcadsc}}</option>
+                                </select>
+
+                                <button class="btn btn-primary" (click)="clickAddProducto()" style="float: right;">Agregar producto</button>
+    
+    <table class="table table-striped" *ngIf="productos && productos.length > 0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Producto</th>
+                <th>SKU</th>
+                <th>Estatus</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of productos, let index = index">
+                <td [ngClass]="{'done': producto.done, 'not-done': !producto.done}">{{producto.id}}</td>
+                <td [ngClass]="{'done': producto.done, 'not-done': !producto.done}">{{producto.productodsc}}</td>
+                <td [ngClass]="{'done': producto.done, 'not-done': !producto.done}">{{producto.sku}}</td>
+                <td [ngClass]="{'done': producto.done, 'not-done': !producto.done}">{{producto.activo}}</td>
+                <td [ngClass]="{'done': producto.done, 'not-done': !producto.done}">{{producto.image}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="handleEditClick(producto)">Editar</button>
+                    <button class="btn btn-danger" (click)="handleDeleteClick(producto.id, index)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+            </div>
+        </div>
+        </div>
+        </div>
+    

@@ -1,0 +1,47 @@
+<div class="modal-header">
+        <h4 class="modal-title">{{createMode ? 'Crear Producto' : 'Editar Producto'}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="productoForm" (ngSubmit)="saveProducto()">
+      
+      
+          <div class="form-group">
+            <label for="productodsc">Producto*</label>
+            <input type="text" id="productodsc" class="form-control" formControlName="productodsc" />
+            <span style="color:Red;" *ngIf="productoForm.controls['productodsc'].touched && productoForm.controls['productodsc'].errors?.required">Title
+              is required.</span>
+          </div>
+      
+
+          <div class="form-group">
+            <label for="sku">SKU*</label>
+            <textarea  id="sku" class="form-control" formControlName="sku"></textarea>
+            <span style="color:Red;" *ngIf="productoForm.controls['sku'].touched && productoForm.controls['sku'].errors?.required">Description
+              is required.</span>
+          </div>
+
+          <div class="form-group">
+              <label for="image">Imagen*</label>
+              <textarea  id="image" class="form-control" formControlName="image"></textarea>
+              <span style="color:Red;" *ngIf="productoForm.controls['image'].touched && productoForm.controls['image'].errors?.required">Description
+                is required.</span>
+            </div>
+      
+      
+          <div class="form-group">
+              <label for="activo">Estatus*</label>
+              <textarea  id="activo" class="form-control" formControlName="activo"></textarea>
+              <span style="color:Red;" *ngIf="productoForm.controls['activo'].touched && productoForm.controls['activo'].errors?.required">Description
+                is required.</span>
+            </div>
+      
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+        <button class="btn btn-primary" (click)="saveProducto(marcaid,marcadsc,planid,plandsc)" [disabled]="productoForm.invalid">Guardar</button>
+      </div>
+      

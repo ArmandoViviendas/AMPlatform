@@ -1,7 +1,6 @@
 export interface PlanInterface {
-    idP?: string;
-    idcliente?: string;
-    clientedsc?: string;
+    id?:string,
+    clienteid?: number,
     plandsc?: string;
     activo?: boolean;
 }

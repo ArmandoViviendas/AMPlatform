@@ -20,6 +20,14 @@ import { PersonalComponent } from './personal/personal.component';
 import { EditarPersonalComponent } from './editar-personal/editar-personal.component';
 
 import { CorporativoComponent } from './corporativo/corporativo.component';
+import { MarcasComponent } from './marcas/marcas.component';
+import { MarcasFormComponent } from './marcas-form/marcas-form.component';
+import { ProductosComponent } from './productos/productos.component';
+import { ProductosFormComponent } from './productos-form/productos-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MetricasComponent } from './metricas/metricas.component';
+import { MetricasFormComponent } from './metricas-form/metricas-form.component';
+
 import { ModalComponent } from './modal/modal.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { PlanComponent } from './plan/plan.component';
@@ -34,6 +42,12 @@ import { ProyectoComponent } from './proyecto/proyecto.component';
     PersonalComponent,
     EditarPersonalComponent,
     CorporativoComponent,
+    MarcasComponent,
+    MarcasFormComponent,
+    ProductosComponent,
+    ProductosFormComponent,
+    MetricasComponent,
+    MetricasFormComponent,
     ModalComponent,
     ClienteComponent,
     PlanComponent,
@@ -51,5 +65,7 @@ import { ProyectoComponent } from './proyecto/proyecto.component';
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
+  entryComponents: [MarcasFormComponent,ProductosFormComponent,ProductosComponent],
+
 })
 export class AppModule { }
