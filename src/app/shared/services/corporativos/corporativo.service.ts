@@ -20,7 +20,7 @@ export class CorporativoService {
   private corporativoDoc: AngularFirestoreDocument<CInterface>;
   private corporativo: Observable<CInterface>;
   public selectedCorporativo: CInterface = {
-    idC: null
+    idCorporativo: null
   };
 
   getAllCorporativos() {
@@ -28,7 +28,7 @@ export class CorporativoService {
     .pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as CInterface;
-        data.idC = action.payload.doc.id;
+        data.idCorporativo = action.payload.doc.id;
         return data;
       });
     }));
@@ -38,12 +38,12 @@ export class CorporativoService {
     this.corporativoCollection.add(corporativo);
   };
   updateCorporativo(corporativo: CInterface): void {
-    let idC = corporativo.idC;
-    this.corporativoDoc = this.afs.doc<CInterface>(`corporativo/${idC}`);
+    let idCorporativo = corporativo.idCorporativo;
+    this.corporativoDoc = this.afs.doc<CInterface>(`corporativo/${idCorporativo}`);
     this.corporativoDoc.update(corporativo);
   };
-  deleteCorporativo(idC: string): void {
-    this.corporativoDoc = this.afs.doc<CInterface>(`corporativo/${idC}`);
+  deleteCorporativo(idCorporativo: string): void {
+    this.corporativoDoc = this.afs.doc<CInterface>(`corporativo/${idCorporativo}`);
     this.corporativoDoc.delete();
   };
 }

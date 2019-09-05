@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <form name="formCorporativo" #formCorporativo="ngForm" (ngSubmit)="onSaveCorporativo(formCorporativo)">
-                    <input type="text" name="idC" [(ngModel)]="this.corporaticoS.selectedCorporativo.idC" hidden>
+                    <input type="text" name="idC" [(ngModel)]="this.corporaticoS.selectedCorporativo.idCorporativo" hidden>
                     <div class="form-group">
                         <label for="corporativodsc" class="col-form-label">Corporativo:</label>
                         <input type="text" class="form-control" name="corporativodsc" [(ngModel)]="this.corporaticoS.selectedCorporativo.corporativodsc">
@@ -44,6 +44,8 @@
             <div class="modal-body">
                 <form name="formCliente" #formCliente="ngForm" (ngSubmit)="onSaveCliente(formCliente)">
                     <input type="text" name="idC" [(ngModel)]="this.clienteservice.selectedCliente.idC" hidden>
+                    <input type="text" name="idCorporativo" [(ngModel)]="this.clienteservice.selectedCliente.idCorporativo" hidden>
+                    <input type="text" name="corporativodsc" [(ngModel)]="this.clienteservice.selectedCliente.corporativodsc" hidden>
                     <div class="form-group">
                         <label for="clientedsc" class="col-form-label">Cliente:</label>
                         <input type="text" class="form-control" name="clientedsc" [(ngModel)]="this.clienteservice.selectedCliente.clientedsc">

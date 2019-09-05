@@ -22,19 +22,25 @@ export class PlanService {
     idP: null
   };
 
-  getAllPlan(cli: string){
-    console.log(cli);
+  public clienteid: string;
+  public clientedsc: string;
+
+  getAllPlan(cli: any){
+    this.clienteid = cli.idC;
+    this.clientedsc = cli.clientedsc;
     return this.plans = this.planCollection.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as PlanInterface;
         data.idP = action.payload.doc.id;
         return data;
-      }).filter(item => item.idcliente == cli);
+      }).filter(item => item.idcliente == cli.idC);
     }));
   }
 
   addPlan(plan: PlanInterface): void {
+    plan.idcliente = this.clienteid;
+    plan.clientedsc = this.clientedsc;
     this.planCollection.add(plan);
   };
 

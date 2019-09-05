@@ -10,6 +10,7 @@ import { CorporativoService } from '../shared/services/corporativos/corporativo.
 /** Select Cliente */
 import { ClienteInterface } from '../models/cliente';
 import { ClienteService } from '../shared/services/clientes/cliente.service';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-plan',
@@ -27,7 +28,7 @@ export class PlanComponent implements OnInit {
   private clienteI: ClienteInterface[];
 
   public selectedCorporativo: string = 'Seleccionar Corporativo';
-  public selectedCliente: string = 'Seleccionar Cliente';
+  public selectedCliente: any = 'Seleccionar Cliente';
 
   ngOnInit() {
     this.getcorporativos();

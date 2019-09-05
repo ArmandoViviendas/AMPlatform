@@ -19,8 +19,11 @@ export class ClienteComponent implements OnInit {
 
   private corporativo: CInterface[];
   private clienteI: ClienteInterface[];
+
+  public corporativoid: string;
+  public corporativodsc: string;
   
-  public selectedValue: string = 'Seleccionar Corporativo';
+  public selectedValue: any = 'Seleccionar Corporativo';
 
   ngOnInit() {
     this.getcorporativos();
@@ -30,8 +33,10 @@ export class ClienteComponent implements OnInit {
     this.clienteservice.getAllClientes(this.selectedValue).subscribe( response  => {
       this.clienteI = response;
     })
+    
   };
 
+ 
   onDeleteCliente(idC: string) {
     const confirmacion = confirm('estas seguro?');
     if(confirmacion){
@@ -47,5 +52,5 @@ export class ClienteComponent implements OnInit {
     this.corporativoS.getAllCorporativos().subscribe( response  => {
       this.corporativo = response;
     })
-  }
+  } 
 }

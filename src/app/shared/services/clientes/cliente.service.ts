@@ -19,22 +19,29 @@ export class ClienteService {
   private clienteDoc: AngularFirestoreDocument<ClienteInterface>;
   private cliente: Observable<ClienteInterface>;
   public selectedCliente: ClienteInterface = {
-    idC: null
+    idC: null,
   };
+
+  public idcorporativo: string;
+  public corporativodsc: string;
   
-  getAllClientes(corp:[]) {
+  getAllClientes(corp: any) {
+    this.idcorporativo = corp.idCorporativo;
+    this.corporativodsc = corp.corporativodsc;
     return this.clientes = this.clienteCollection.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as ClienteInterface;
         data.idC = action.payload.doc.id;
         return data;
-      }).filter(item => item.idCorporativo == corp.idC);
+      }).filter(item => item.idCorporativo == corp.idCorporativo);
     }));
   };
 
-  addCliente(cliente: ClienteInterface, corp: []): void {
-    this.clienteCollection.add(cliente, corp);
+  addCliente(cliente: ClienteInterface): void {
+    cliente.idCorporativo = this.idcorporativo;
+    cliente.corporativodsc = this.corporativodsc;
+    this.clienteCollection.add(cliente);
   };
   updateCliente(cliente: ClienteInterface): void {
     let idC = cliente.idC;
