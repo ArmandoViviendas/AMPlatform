@@ -32,6 +32,7 @@ import { ModalComponent } from './modal/modal.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { PlanComponent } from './plan/plan.component';
 import { ProyectoComponent } from './proyecto/proyecto.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { ProyectoComponent } from './proyecto/proyecto.component';
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModalModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

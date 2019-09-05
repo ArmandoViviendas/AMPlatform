@@ -23,18 +23,31 @@ export class ProyectoService {
     idP: null
   };
 
-  getAllProyectos(){
+  public clienteid: string;
+  public clientedsc: string;
+  public planid: string;
+  public plandsc: string;
+
+  getAllProyectos(plan: any){
+    this.clienteid = plan.idcliente;
+    this.clientedsc = plan.clientedsc;
+    this.planid = plan.idP;
+    this.plandsc = plan.plandsc;
     return this.proyectos = this.proyectoCollection.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as ProyectoInterface;
         data.idP = action.payload.doc.id;
         return data;
-      });
+      }).filter(item => item.idPlan == plan.idP);
     }));
   }
 
   addProyecto(proyecto: ProyectoInterface): void {
+    proyecto.idcliente = this.clienteid;
+    proyecto.clientedsc = this.clientedsc;
+    proyecto.idPlan = this.planid;
+    proyecto.plandsc = this.plandsc;
     this.proyectoCollection.add(proyecto);
   };
 
