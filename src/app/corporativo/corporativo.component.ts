@@ -24,10 +24,11 @@ export class CorporativoComponent implements OnInit {
     })
   };
 
-  onDeleteCorporativo(idC: string) {
+  onDeleteCorporativo(idCorporativo: string) {
+    console.log(idCorporativo);
     const confirmacion = confirm('estas seguro?');
     if(confirmacion){
-      this.corporativoS.deleteCorporativo(idC);
+      this.corporativoS.deleteCorporativo(idCorporativo);
     }
   }
 

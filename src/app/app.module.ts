@@ -34,6 +34,8 @@ import { PlanComponent } from './plan/plan.component';
 import { ProyectoComponent } from './proyecto/proyecto.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { CadenaComponent } from './cadena/cadena.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +54,8 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     ModalComponent,
     ClienteComponent,
     PlanComponent,
-    ProyectoComponent
+    ProyectoComponent,
+    CadenaComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

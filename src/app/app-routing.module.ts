@@ -4,15 +4,19 @@ import { DashboardComponent} from './dashboard/dashboard.component';
 import { LoginComponent} from './login/login.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { EditarPersonalComponent } from './editar-personal/editar-personal.component';
-import { CorporativoComponent } from './corporativo/corporativo.component';
 
 import { MarcasComponent } from './marcas/marcas.component';
 import { ProductosComponent } from './productos/productos.component';
 import { MetricasComponent } from './metricas/metricas.component';
 
+/** corporativo */
+import { CorporativoComponent } from './corporativo/corporativo.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { PlanComponent } from './plan/plan.component';
 import { ProyectoComponent } from './proyecto/proyecto.component';
+
+/** tiendas */
+import { CadenaComponent } from './cadena/cadena.component';
 
 
 const routes: Routes = [
@@ -26,7 +30,8 @@ const routes: Routes = [
   {path: 'Metricas', component:MetricasComponent},
   {path: 'Cliente', component:ClienteComponent},
   {path: 'Plan', component:PlanComponent},
-  {path: 'Proyecto', component:ProyectoComponent}
+  {path: 'Proyecto', component:ProyectoComponent},
+  {path: 'Cadena', component:CadenaComponent}
 
 ];
 

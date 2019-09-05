@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
 import { CorporativoService } from '../shared/services/corporativos/corporativo.service';
 import { CInterface } from '../models/corporativo';
 import { NgForm } from '@angular/forms';
@@ -15,7 +15,9 @@ import { PlanInterface } from '../models/plan';
 import { ProyectoService } from '../shared/services/proyecto/proyecto.service';
 import { ProyectoInterface } from '../models/proyecto';
 
-
+/** Cadena */
+import { CadenaService } from '../shared/services/cadenas/cadena.service';
+import { CadenaInterface } from '../models/cadena';
 
 @Component({
   selector: 'app-modal',
@@ -28,11 +30,13 @@ export class ModalComponent implements OnInit {
     private corporaticoS: CorporativoService,
     private clienteservice: ClienteService,
     private planservice: PlanService,
-    private proyectoservice: ProyectoService) { }
+    private proyectoservice: ProyectoService,
+    private cadenaservice: CadenaService) { }
 
   ngOnInit() {
   }
 
+  //corporativo
   onSaveCorporativo(corporativoForm: NgForm): void {
     if (corporativoForm.value.idC == null){
       //guardar
@@ -43,6 +47,7 @@ export class ModalComponent implements OnInit {
     }
   }
 
+  //cliente
   onSaveCliente(clienteForm: NgForm): void {
     if (clienteForm.value.idC == null){
       //guardar
@@ -53,6 +58,7 @@ export class ModalComponent implements OnInit {
     }
   }
 
+  //plan
   onSavePlan(planForm: NgForm): void {
     if (planForm.value.idP == null){
       this.planservice.addPlan(planForm.value);
@@ -61,11 +67,22 @@ export class ModalComponent implements OnInit {
     }
   }
 
+  //proyecto
   onSaveProyecto(proyectoForm: NgForm): void {
     if (proyectoForm.value.idP == null){
       this.proyectoservice.addProyecto(proyectoForm.value);
     }else {
       this.proyectoservice.updateProyecto(proyectoForm.value);
+    }
+  }
+
+  //cadena
+  onSaveCadena(cadenaForm: NgForm): void {
+    console.log(cadenaForm);
+    if (cadenaForm.value.idcadena == null){
+      this.cadenaservice.addCadena(cadenaForm.value);
+    }else {
+      this.cadenaservice.updateCadena(cadenaForm.value);
     }
   }
 
