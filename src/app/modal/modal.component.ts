@@ -23,6 +23,10 @@ import { CadenaInterface } from '../models/cadena';
 import { FormatoService } from '../shared/services/formato/formato.service';
 import { FormatoInterface } from '../models/formato';
 
+/** Canal */
+import { CanalService } from '../shared/services/canal/canal.service';
+import { CanalInterface } from '../models/canal';
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -36,7 +40,8 @@ export class ModalComponent implements OnInit {
     private planservice: PlanService,
     private proyectoservice: ProyectoService,
     private cadenaservice: CadenaService,
-    private formatoservice: FormatoService) { }
+    private formatoservice: FormatoService,
+    private canalservice: CanalService) { }
 
   ngOnInit() {
   }
@@ -96,6 +101,15 @@ export class ModalComponent implements OnInit {
       this.formatoservice.addFormato(formatoForm.value);
     }else {
       this.formatoservice.updateFormato(formatoForm.value);
+    }
+  }
+
+  //canal
+  onSaveCanal(canalForm: NgForm): void {
+    if (canalForm.value.idcanal == null){
+      this.canalservice.addCanal(canalForm.value);
+    }else {
+      this.canalservice.updateCanal(canalForm.value);
     }
   }
 }
