@@ -14,8 +14,24 @@
                         <div class="card-content">
                             <div class="card-body">
     
-                                    <select >
+                                    <select [(ngModel)]="selectedValuePla" (change)="verPla(selectedValuePla)" style="margin-right: 30px;">
                                             <option selected>Seleccione un plan</option>
+                                            <option *ngFor="let plan of planes" [ngValue]="plan" >{{plan.plandsc}}</option>
+                                    </select>
+
+                                    <select [(ngModel)]="selectedValueProyec" (change)="verProyec(selectedValueProyec)" style="margin-right: 30px;">
+                                            <option selected>Seleccione un proyecto</option>
+                                            <option *ngFor="let pro of ProyectoI" [ngValue]="pro" >{{pro.proyectodsc}}</option>
+                                    </select>
+
+                                    <select [(ngModel)]="selectedValueMetrica" (change)="verMetricas(selectedValueMetrica)" style="margin-right: 30px;">
+                                            <option selected>Seleccione una métrica</option>
+                                            <option *ngFor="let metrica of metricas" [ngValue]="metrica" >{{metrica.metricadsc}}</option>
+                                    </select>
+
+                                    <select [(ngModel)]="selectedValueProducto" (change)="verProducto(selectedValueProducto)" style="margin-right: 30px;">
+                                            <option selected>Seleccione un producto</option>
+                                            <option *ngFor="let producto of productos" [ngValue]="producto" >{{producto.productodsc}}</option>
                                     </select>
                                     
                                 <button class="btn btn-primary" (click)="clickAddMetricaPro()"style="float: right;">Asignar</button>

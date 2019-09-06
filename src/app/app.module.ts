@@ -35,6 +35,14 @@ import { ProyectoComponent } from './proyecto/proyecto.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { MetricasProComponent } from './metricas-pro/metricas-pro.component';
 
+import { CadenaComponent } from './cadena/cadena.component';
+import { FormatoComponent } from './formato/formato.component';
+import { CanalComponent } from './canal/canal.component';
+import { EstadoComponent } from './estado/estado.component';
+import { CiudadComponent } from './ciudad/ciudad.component';
+import { RegionComponent } from './region/region.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +62,14 @@ import { MetricasProComponent } from './metricas-pro/metricas-pro.component';
     ClienteComponent,
     PlanComponent,
     ProyectoComponent,
-    MetricasProComponent
+    MetricasProComponent,
+    CadenaComponent,
+    FormatoComponent,
+    CanalComponent,
+    EstadoComponent,
+    CiudadComponent,
+    RegionComponent
+
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

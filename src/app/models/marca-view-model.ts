@@ -5,4 +5,4 @@ export interface MarcaViewModel {
     plandsc?: string;
     propiacompetencia?: string;
     activo?: number;
-}
+} 

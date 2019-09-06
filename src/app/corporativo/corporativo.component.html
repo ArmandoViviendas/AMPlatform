@@ -30,11 +30,11 @@
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let corp of corporativo"> 
-                                            <th scope="row">{{corp.idC}}</th>
+                                            <th scope="row">{{corp.idCorporativo}}</th>
                                             <td>{{corp.corporativodsc}}</td>
                                             <td>{{corp.activo}}</td>
                                             <td><button class="btn btn-primary" (click)=onPreUpdateCorporativo(corp) data-toggle="modal" data-target="#ModalCorporativo">Editar</button></td>
-                                            <td><button class="btn btn-danger" (click)="onDeleteCorporativo(corp.idC)">Eliminar</button></td>
+                                            <td><button class="btn btn-danger" (click)="onDeleteCorporativo(corp.idCorporativo)">Eliminar</button></td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -22,14 +22,17 @@ import { PlanViewModel } from '../models/plan-view-model';
 })
 export class MetricasComponent implements OnInit {
 
+  //Variables públicas para asignar valores del select
   public corporativoObj: any;
   public corporativoid: string;
   public corporativodsc: string;
 
+  //Variables públicas para asignar valores del select
   public clienteObj: any;
   public clienteid: string;
   public clientedsc: string;
 
+  //Variables públicas para asignar valores del select
   public planObj: any;
   public planid: string;
   public plandsc: string;
@@ -38,17 +41,18 @@ export class MetricasComponent implements OnInit {
   private corporativo: CInterface[];
   private PlanI: PlanInterface[];
   
-  public selectedValueCorp: any = "Seleccione corporativo";
-  public selectedValueCli: any = "Seleccione un cliente";
-  public selectedValuePla: any = "Seleccione un plan";
+  public selectedValueCorp: any = "Seleccione corporativo";//Valiable asignada para no mostrar el select vacío
+  public selectedValueCli: any = "Seleccione un cliente";//Valiable asignada para no mostrar el select vacío
+  public selectedValuePla: any = "Seleccione un plan";//Valiable asignada para no mostrar el select vacío
 
-
+  //Inyección de servicios
   constructor(private corporativoS: CorporativoService,
               private clienteservice: ClienteService,
               private planService: PlanService,
               private metricaService: MetricaService,
               private modalService: NgbModal,) { }
 
+  //Consulta por default            
   ngOnInit() {
     this.getcorporativos();
   }
@@ -66,7 +70,7 @@ export class MetricasComponent implements OnInit {
     })
   };
   
-  //Plan
+  //Consulta todos los planes
   planes: PlanViewModel[] = [];
   loadPlanes() {
       this.planService.getPlanesPorCliente(this.clienteid).subscribe(response => {
@@ -86,7 +90,7 @@ export class MetricasComponent implements OnInit {
       });
     }
 
-    //Metricas
+    //Consulta metricas por plan 
     metricas: MetricaViewModel[] = [];
     loadMetricas() {
       this.metricaService.getMetricasPorPlan(this.planid).subscribe(response => {
@@ -110,6 +114,7 @@ export class MetricasComponent implements OnInit {
       });
     }
 
+  //Funcion para asignar variables provenientes del select del corporativo  
   verC(valueCorp){
     console.log("Objeto corporativo",valueCorp);
     this.corporativoObj = valueCorp;
@@ -121,6 +126,7 @@ export class MetricasComponent implements OnInit {
     return valueCorp;
   }
 
+  //Funcion para asignar variables provenientes del select del cliente
   verClie(valueClie){
     console.log("Objeto cliente",valueClie);
     this.clienteObj = valueClie;
@@ -132,6 +138,7 @@ export class MetricasComponent implements OnInit {
     return valueClie;
   }
 
+  //Funcion para asignar variables provenientes del select del plan
   verPla(valuePla){
     console.log("Objeto plan",valuePla);
     this.planObj = valuePla;
@@ -143,8 +150,10 @@ export class MetricasComponent implements OnInit {
     return valuePla;
   }
 
+  //Función encargada de abril el modal en su modo de creación
   clickAddMetrica() {
     const modal = this.modalService.open(MetricasFormComponent);
+    //Variables obtenidas del select mandadas al modal
     modal.componentInstance.planid = this.planid;
     modal.componentInstance.plandsc = this.plandsc;
     modal.componentInstance.clienteid = this.clienteid;
@@ -155,6 +164,8 @@ export class MetricasComponent implements OnInit {
     )
   }
 
+  /*Funcion que se ejecuta a cerrar el modal y dependiedo
+   el valor createMode crea un nuevo documento o busca el documento a editar*/
   handleModalMetricaFormClose(response) {
 
     if (response === Object(response)) {
@@ -168,6 +179,7 @@ export class MetricasComponent implements OnInit {
     }
   }
 
+  //Función encargada de abril el modal en su modo de edición
   handleEditClick(metrica: MetricaViewModel) {
     const modal = this.modalService.open(MetricasFormComponent);
     modal.result.then(
@@ -178,6 +190,7 @@ export class MetricasComponent implements OnInit {
     modal.componentInstance.metrica = metrica;
   }
 
+  //Función para ejecutar el servicio que elimina la metrica
   handleDeleteClick(metricaId: string, index: number) {
     this.metricaService.deleteMetrica(metricaId)
       .then(() => {

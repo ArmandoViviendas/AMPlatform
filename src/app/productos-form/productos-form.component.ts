@@ -13,14 +13,15 @@ import { Producto } from '../models/producto';
 })
 export class ProductosFormComponent implements OnInit {
 
-  productoForm: FormGroup;
-  createMode: boolean = true;
-  producto: ProductoViewModel;
+  productoForm: FormGroup; //Variable necesaria para la creación de un modal
+  createMode: boolean = true;//Variable para indicar si el titulo del modal sera de creación o de edición
+  producto: ProductoViewModel; //Interfaz para creación o modificación del registro según el caso
 
   constructor(private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
     private productoService: ProductoService) { }
 
+    //Validadores (valores de llanado obligatorio)  
   ngOnInit() {
     this.productoForm = this.formBuilder.group({
       productodsc: ['', Validators.required],
@@ -34,15 +35,18 @@ export class ProductosFormComponent implements OnInit {
     }
   }
 
+  //Carga de la información en caso de edición
   loadProducto(producto){
     this.productoForm.patchValue(producto)
   }
 
+  //Funcion encargada la recibir valores del select y ejecución del servicio
   saveProducto(marcaid:string,marcadsc: string,planid: string,plandsc: string) {
     if (this.productoForm.invalid) {
       return;
     }
 
+    //Caso creación de registro
     if (this.createMode){
       let producto: Producto = this.productoForm.value;
       producto.marcaid = marcaid;
@@ -52,7 +56,9 @@ export class ProductosFormComponent implements OnInit {
       this.productoService.saveProducto(producto)
       .then(response => this.handleSuccessfulSaveProducto(response, producto))
       .catch(err => console.error(err));
-    } else{
+    }
+    //Caso edición de registro  
+    else{
       let producto: ProductoViewModel = this.productoForm.value;
       producto.id = this.producto.id;
       this.productoService.editProducto(producto)

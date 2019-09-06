@@ -4,16 +4,24 @@ import { DashboardComponent} from './dashboard/dashboard.component';
 import { LoginComponent} from './login/login.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { EditarPersonalComponent } from './editar-personal/editar-personal.component';
-import { CorporativoComponent } from './corporativo/corporativo.component';
 
 import { MarcasComponent } from './marcas/marcas.component';
 import { ProductosComponent } from './productos/productos.component';
 import { MetricasComponent } from './metricas/metricas.component';
 
+/** corporativo */
+import { CorporativoComponent } from './corporativo/corporativo.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { PlanComponent } from './plan/plan.component';
 import { ProyectoComponent } from './proyecto/proyecto.component';
 
+/** tiendas */
+import { CadenaComponent } from './cadena/cadena.component';
+import { FormatoComponent } from './formato/formato.component';
+import { CanalComponent } from './canal/canal.component';
+import { EstadoComponent } from './estado/estado.component';
+import { CiudadComponent } from './ciudad/ciudad.component';
+import { RegionComponent } from './region/region.component';
 
 import { MetricasProComponent} from './metricas-pro/metricas-pro.component';
 
@@ -30,7 +38,13 @@ const routes: Routes = [
   {path: 'Cliente', component:ClienteComponent},
   {path: 'Plan', component:PlanComponent},
   {path: 'Proyecto', component:ProyectoComponent},
-  {path: 'MetricasProductos', component:MetricasProComponent}
+  {path: 'MetricasProductos', component:MetricasProComponent},
+  {path: 'Cadena', component:CadenaComponent},
+  {path: 'Formato', component:FormatoComponent},
+  {path: 'Canal', component:CanalComponent},
+  {path: 'Estado', component:EstadoComponent},
+  {path: 'Ciudad', component:CiudadComponent},
+  {path: 'Region', component:RegionComponent}
 
 ];
 

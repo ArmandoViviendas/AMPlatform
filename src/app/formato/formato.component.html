@@ -1,0 +1,61 @@
+<div class="loading" lang="en" data-textdirection="ltr" id="html">
+    <div class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns" id="body">
+        <app-nav></app-nav>
+        <div class="app-content content">
+            <div class="content-wrapper">
+                <div class="content-wrapper-before"></div>
+                <div class="content-header row">
+                    <div class="content-header-left col-md-4 col-12 mb-2">
+                        <h3 class="content-header-title">juan@controlplus.mx</h3>
+                    </div>
+                </div>
+                <div class="content-body">
+                    <section id="global-settings" class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Cliente</h4>
+                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h1 for="Corporativo">Cadena</h1>
+                                <select class="form-control" [(ngModel)]="selectedCadena" (change)="getListFormato()">
+                                    <option selected>Seleccionar Cadena</option>
+                                    <option *ngFor="let cad of cadenaI" [ngValue]="cad">
+                                        {{cad.cadenadsc}}
+                                    </option>
+                                </select>          
+                            </div>     
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#ModalFormato">Agregar</button>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" >#</th>
+                                            <th scope="col">Cliente</th>
+                                            <th scope="col">Activo</th>
+                                            <th colspan="2" scope="col">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let format of formatoI"> 
+                                            <th scope="row">{{format.idformato}}</th>
+                                            <td>{{format.formatodsc}}</td>
+                                            <td>{{format.activo}}</td>
+                                            <td><button class="btn btn-primary" (click)=onPreUpdateFormato(format) data-toggle="modal" data-target="#ModalFormato">Editar</button></td>
+                                            <td><button class="btn btn-danger" (click)="onDeleteFormato(format.idformato)">Eliminar</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-modal></app-modal>
+

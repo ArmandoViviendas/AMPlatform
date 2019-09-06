@@ -13,14 +13,15 @@ import { Metrica } from '../models/metrica';
 })
 export class MetricasFormComponent implements OnInit {
 
-  metricaForm: FormGroup;
-  createMode: boolean = true;
-  metrica: MetricaViewModel;
+  metricaForm: FormGroup; //Variable necesaria para la creación de un modal
+  createMode: boolean = true;//Variable para indicar si el titulo del modal sera de creación o de edición
+  metrica: MetricaViewModel;//Interfaz para creación o modificación del registro según el caso
 
   constructor(private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
     private metricaService: MetricaService) { }
 
+    //Validadores (valores de llanado obligatorio)  
   ngOnInit() {
     this.metricaForm = this.formBuilder.group({
       metricadsc: ['', Validators.required],
@@ -33,15 +34,18 @@ export class MetricasFormComponent implements OnInit {
     }
   }
 
+  //Carga de la información en caso de edición
   loadMetrica(metrica){
     this.metricaForm.patchValue(metrica)
   }
 
+  //Funcion encargada la recibir valores del select y ejecución del servicio
   saveMetrica(planid: string,plandsc:string,clienteid: string, clientedsc: string) {
     if (this.metricaForm.invalid) {
       return;
     }
 
+    //Caso creación de registro
     if (this.createMode){
       let metrica: Metrica = this.metricaForm.value;
       metrica.planid = planid;
@@ -51,7 +55,9 @@ export class MetricasFormComponent implements OnInit {
       this.metricaService.saveMetrica(metrica)
       .then(response => this.handleSuccessfulSaveMetrica(response, metrica))
       .catch(err => console.error(err));
-    } else{
+    }
+    //Caso edición de registro 
+    else{
       let metrica: MetricaViewModel = this.metricaForm.value;
       metrica.id = this.metrica.id;
       this.metricaService.editMetrica(metrica)
