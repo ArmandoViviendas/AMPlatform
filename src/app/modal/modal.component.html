@@ -270,3 +270,37 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Ciudad -->
+<div class="modal fade" id="ModalCiudad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Ciudad</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="formCiudad" #formCiudad="ngForm" (ngSubmit)="onSaveCiudad(formCiudad)">
+                    <input type="text" name="idciudad" [(ngModel)]="this.ciudadservice.selectedCiudad.idciudad" hidden>
+                    <div class="form-group">
+                        <label for="ciudaddsc" class="col-form-label">Ciudad:</label>
+                        <input type="text" class="form-control" name="ciudaddsc" [(ngModel)]="this.ciudadservice.selectedCiudad.ciudaddsc">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Activo:</label><br>
+                        <select name="activo" class="form-control" [(ngModel)]="this.ciudadservice.selectedCiudad.activo">
+                            <option value="true" selected>Si</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

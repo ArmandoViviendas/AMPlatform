@@ -31,6 +31,10 @@ import { CanalInterface } from '../models/canal';
 import { EstadoService } from '../shared/services/estados/estado.service';
 import { EstadoInterface } from '../models/estado';
 
+/** Ciudad */
+import { CiudadService } from '../shared/services/ciudades/ciudad.service';
+import { CiudadInterface } from '../models/ciudad';
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -46,7 +50,8 @@ export class ModalComponent implements OnInit {
     private cadenaservice: CadenaService,
     private formatoservice: FormatoService,
     private canalservice: CanalService,
-    private estadoservice: EstadoService) { }
+    private estadoservice: EstadoService,
+    private ciudadservice: CiudadService) { }
 
   ngOnInit() {
   }
@@ -136,6 +141,17 @@ export class ModalComponent implements OnInit {
     }else {
       //modificar
       this.estadoservice.updateEstado(estadoForm.value);
+    }
+  }
+
+  //ciudad
+  onSaveCiudad(ciudadForm: NgForm): void {
+    if (ciudadForm.value.idciudad == null){
+      //guardar
+      this.ciudadservice.addCiudad(ciudadForm.value);
+    }else {
+      //modificar
+      this.ciudadservice.updateCiudad(ciudadForm.value);
     }
   }
 }

@@ -43,14 +43,15 @@ export class FormatoService {
     formato.cadenadsc = this.cadenadsc;
     this.formatoCollection.add(formato);
   };
+
   updateFormato(formato: FormatoInterface): void {
     let idformato = formato.idformato;
     this.formatoDoc = this.afs.doc<FormatoInterface>(`formato/${idformato}`);
     this.formatoDoc.update(formato);
   };
+  
   deleteFormato(idformato: string): void {
     this.formatoDoc = this.afs.doc<FormatoInterface>(`formato/${idformato}`);
     this.formatoDoc.delete();
   };
-
 }

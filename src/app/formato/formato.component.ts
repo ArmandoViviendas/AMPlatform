@@ -36,7 +36,6 @@ export class FormatoComponent implements OnInit {
   };
 
   onDeleteFormato(idformato: string) {
-    console.log(idformato);
     const confirmacion = confirm('estas seguro?');
     if(confirmacion){
       this.formatoservice.deleteFormato(idformato);
