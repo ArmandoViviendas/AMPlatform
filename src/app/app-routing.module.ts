@@ -19,6 +19,7 @@ import { ProyectoComponent } from './proyecto/proyecto.component';
 import { CadenaComponent } from './cadena/cadena.component';
 import { FormatoComponent } from './formato/formato.component';
 import { CanalComponent } from './canal/canal.component';
+import { EstadoComponent } from './estado/estado.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent,canActivate: [AuthGuard]},
@@ -34,7 +35,8 @@ const routes: Routes = [
   {path: 'Proyecto', component:ProyectoComponent},
   {path: 'Cadena', component:CadenaComponent},
   {path: 'Formato', component:FormatoComponent},
-  {path: 'Canal', component:CanalComponent}
+  {path: 'Canal', component:CanalComponent},
+  {path: 'Estado', component:EstadoComponent}
 ];
 
 @NgModule({

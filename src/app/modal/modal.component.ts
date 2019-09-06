@@ -27,6 +27,10 @@ import { FormatoInterface } from '../models/formato';
 import { CanalService } from '../shared/services/canal/canal.service';
 import { CanalInterface } from '../models/canal';
 
+/** Estado */
+import { EstadoService } from '../shared/services/estados/estado.service';
+import { EstadoInterface } from '../models/estado';
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -41,7 +45,8 @@ export class ModalComponent implements OnInit {
     private proyectoservice: ProyectoService,
     private cadenaservice: CadenaService,
     private formatoservice: FormatoService,
-    private canalservice: CanalService) { }
+    private canalservice: CanalService,
+    private estadoservice: EstadoService) { }
 
   ngOnInit() {
   }
@@ -71,8 +76,10 @@ export class ModalComponent implements OnInit {
   //plan
   onSavePlan(planForm: NgForm): void {
     if (planForm.value.idP == null){
+      //guardar
       this.planservice.addPlan(planForm.value);
     }else {
+      //modificar
       this.planservice.updatePlan(planForm.value);
     }
   }
@@ -80,8 +87,10 @@ export class ModalComponent implements OnInit {
   //proyecto
   onSaveProyecto(proyectoForm: NgForm): void {
     if (proyectoForm.value.idP == null){
+      //guardar
       this.proyectoservice.addProyecto(proyectoForm.value);
     }else {
+      //modificar
       this.proyectoservice.updateProyecto(proyectoForm.value);
     }
   }
@@ -89,8 +98,10 @@ export class ModalComponent implements OnInit {
   //cadena
   onSaveCadena(cadenaForm: NgForm): void {
     if (cadenaForm.value.idcadena == null){
+      //guardar
       this.cadenaservice.addCadena(cadenaForm.value);
     }else {
+      //modificar
       this.cadenaservice.updateCadena(cadenaForm.value);
     }
   }
@@ -98,8 +109,10 @@ export class ModalComponent implements OnInit {
   //cadena
   onSaveFormato(formatoForm: NgForm): void {
     if (formatoForm.value.idformato == null){
+      //guardar
       this.formatoservice.addFormato(formatoForm.value);
     }else {
+      //modificar
       this.formatoservice.updateFormato(formatoForm.value);
     }
   }
@@ -107,9 +120,22 @@ export class ModalComponent implements OnInit {
   //canal
   onSaveCanal(canalForm: NgForm): void {
     if (canalForm.value.idcanal == null){
+      //guardar
       this.canalservice.addCanal(canalForm.value);
     }else {
+      //modificar
       this.canalservice.updateCanal(canalForm.value);
+    }
+  }
+
+  //estado
+  onSaveEstado(estadoForm: NgForm): void {
+    if (estadoForm.value.idestado == null){
+      //guardar
+      this.estadoservice.addEstado(estadoForm.value);
+    }else {
+      //modificar
+      this.estadoservice.updateEstado(estadoForm.value);
     }
   }
 }

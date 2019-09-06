@@ -37,6 +37,8 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { CadenaComponent } from './cadena/cadena.component';
 import { FormatoComponent } from './formato/formato.component';
 import { CanalComponent } from './canal/canal.component';
+import { EstadoComponent } from './estado/estado.component';
+import { CiudadComponent } from './ciudad/ciudad.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { CanalComponent } from './canal/canal.component';
     ProyectoComponent,
     CadenaComponent,
     FormatoComponent,
-    CanalComponent
+    CanalComponent,
+    EstadoComponent,
+    CiudadComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
