@@ -35,6 +35,10 @@ import { EstadoInterface } from '../models/estado';
 import { CiudadService } from '../shared/services/ciudades/ciudad.service';
 import { CiudadInterface } from '../models/ciudad';
 
+/** Region */
+import { RegionService } from '../shared/services/regiones/region.service';
+import { RegionInterface } from '../models/region';
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -51,7 +55,8 @@ export class ModalComponent implements OnInit {
     private formatoservice: FormatoService,
     private canalservice: CanalService,
     private estadoservice: EstadoService,
-    private ciudadservice: CiudadService) { }
+    private ciudadservice: CiudadService,
+    private regionservice: RegionService) { }
 
   ngOnInit() {
   }
@@ -152,6 +157,17 @@ export class ModalComponent implements OnInit {
     }else {
       //modificar
       this.ciudadservice.updateCiudad(ciudadForm.value);
+    }
+  }
+
+  //Region
+  onSaveRegion(regionForm: NgForm): void {
+    if (regionForm.value.idregion == null){
+      //guardar
+      this.regionservice.addRegion(regionForm.value);
+    }else {
+      //modificar
+      this.regionservice.updateRegion(regionForm.value);
     }
   }
 }

@@ -39,6 +39,7 @@ import { FormatoComponent } from './formato/formato.component';
 import { CanalComponent } from './canal/canal.component';
 import { EstadoComponent } from './estado/estado.component';
 import { CiudadComponent } from './ciudad/ciudad.component';
+import { RegionComponent } from './region/region.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { CiudadComponent } from './ciudad/ciudad.component';
     FormatoComponent,
     CanalComponent,
     EstadoComponent,
-    CiudadComponent
+    CiudadComponent,
+    RegionComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
