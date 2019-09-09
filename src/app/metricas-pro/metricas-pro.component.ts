@@ -8,6 +8,10 @@ import { MetricaService } from '../services/metrica.service';
 import { MetricaViewModel } from '../models/metrica-view-model';
 import { ProductoService } from '../services/producto.service';
 import { ProductoViewModel } from '../models/producto-view-model';
+import { MetricaproyectoproductoService} from '../services/metricaproyectoproducto.service';
+import { MetricaproyectoproductoViewModel } from '../models/metricaproyectoproducto-view-model';
+import { DocumentReference } from 'angularfire2/firestore';
+import { Metricaproyectoproducto } from '../models/metricaproyectoproducto';
 
 @Component({
   selector: 'app-metricas-pro',
@@ -17,17 +21,13 @@ import { ProductoViewModel } from '../models/producto-view-model';
 export class MetricasProComponent implements OnInit {
 
   //Variables públicas para asignar valores del select
-  public planObj: any;
-  public planid: string;
-  public plandsc: string;
+  public planObj: any; public planid: string; public plandsc: string;
 
-  public proyectoObj: any;
-  public proyectoid: string;
-  public proyectodsc: string;
+  public proyectoObj: any; public proyectoid: string; public proyectodsc: string;
 
-  public metricaObj: any;
-  public metricaid: string;
-  public metricadsc: string;
+  public metricaObj: any; public metricaid: string; public metricadsc: string;
+
+  public productoObj: any; public productoid: string; public productodsc: string;
 
   public selectedValuePla: any= "Seleccione un plan";//Valiable asignada para no mostrar el select vacío
   public selectedValueProyec: any= "Seleccione un proyecto";//Valiable asignada para no mostrar el select vacío
@@ -40,11 +40,14 @@ export class MetricasProComponent implements OnInit {
   constructor(private modalService: NgbModal,
     private planService: PlanService,
     private proyectoservice: ProyectoService,
-    private metricaService: MetricaService) { }
+    private metricaService: MetricaService,
+    private productoService: ProductoService,
+    private metricappService: MetricaproyectoproductoService) { }
 
     //Consulta por default
   ngOnInit() {
     this.loadPlanes();
+    this.loadMetricasPP();
   }
 
   //Consulta todos los planes
@@ -97,6 +100,84 @@ export class MetricasProComponent implements OnInit {
         });
       });
     }
+
+    //Consultar productos por plan
+    productos: ProductoViewModel[] = [];
+    loadProductosPorPlan() {
+      this.productoService.getProductosPorPlan(this.planid).subscribe(response => {
+        this.productos = [];
+        response.docs.forEach(value => {
+          const data = value.data();
+          const id = value.id;
+          const producto: ProductoViewModel = {
+            id: id,
+            marcaid: data.marcaid,
+            productodsc: data.productodsc,
+            sku: data.sku,
+            image: data.image,
+            activo: data.activo
+          };
+          this.productos.push(producto);
+        });
+      });
+    }
+
+    //Consulta todos los planes
+  metricaspp: MetricaproyectoproductoViewModel[] = [];
+  loadMetricasPP() {
+      this.metricappService.getMetricasPP().subscribe(response => {
+        this.metricaspp = [];
+        response.docs.forEach(value => {
+          const data = value.data();
+          const id = value.id;
+          const metricapp: MetricaproyectoproductoViewModel = {
+            id: id,
+            proyectodsc: data.proyectodsc,
+            productodsc: data.productodsc,
+            metricadsc: data.metricadsc,
+            datovalidotipo: data.datovalidotipo,
+            datovalido: data.datovalido,
+            obligatorio: data.obligatorio
+          };
+          this.metricaspp.push(metricapp);
+        });
+      });
+    }
+
+    //Creación de nueva asignación sin usar modal
+    saveAsignacion() {
+      if(this.planid != null){
+        if(this.proyectoid != null){
+          if (this.metricaid != null) {
+            if(this.productoid != null){
+                                const metricapp: MetricaproyectoproductoViewModel = {
+                                metricaid: this.metricaid,
+                                metricadsc: this.metricadsc,
+                                proyectoid: this.proyectoid,
+                                proyectodsc: this.proyectodsc,
+                                productoid: this.productoid,
+                                productodsc: this.productodsc,
+                                datovalidotipo: "Abierta",
+                                datovalido: "Cualquier Digito",
+                                datovalidoid: "1",
+                                activo: "Activo",
+                                obligatorio: "No"
+                                };
+                                this.metricappService.saveMetricaPP(metricapp);
+                                alert("Asignación de métrica correcta");
+                }else{
+                  alert("Debes de seleccionar un producto antes");
+                }
+           }else{
+            alert("Debes de seleccionar una métrica antes");
+           }
+      }else{
+        alert("Debes de seleccionar un proyecto antes");
+      }   
+    } else {
+      alert("Debes de seleccionar un plan antes");
+  }
+  }
     
     //Funcion para asignar variables provenientes del select del plan
     verPla(valuePla){
@@ -108,6 +189,7 @@ export class MetricasProComponent implements OnInit {
       console.log("plandsc ",this.plandsc);
       this.getListProyectos();
       this.loadMetricas();
+      this.loadProductosPorPlan();
       return valuePla;
     }
 
@@ -131,6 +213,17 @@ export class MetricasProComponent implements OnInit {
       console.log("metricaid ",this.metricaid);
       console.log("metrica ",this.metricadsc);
       return valueMetrica;
+    }
+
+    //Funcion para asignar variables provenientes del select de producto
+    verProducto(valueProducto){
+      console.log("Objeto producto",valueProducto);
+      this.productoObj = valueProducto;
+      this.productoid = this.productoObj.id;
+      this.productodsc = this.productoObj.productodsc;
+      console.log("productoid ",this.productoid);
+      console.log("producto ",this.productodsc);
+      return valueProducto;
     }
 
 }

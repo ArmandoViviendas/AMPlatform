@@ -41,6 +41,7 @@ import { CanalComponent } from './canal/canal.component';
 import { EstadoComponent } from './estado/estado.component';
 import { CiudadComponent } from './ciudad/ciudad.component';
 import { RegionComponent } from './region/region.component';
+import { MetricasProFormComponent } from './metricas-pro-form/metricas-pro-form.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { RegionComponent } from './region/region.component';
     CanalComponent,
     EstadoComponent,
     CiudadComponent,
-    RegionComponent
+    RegionComponent,
+    MetricasProFormComponent
 
   ],
   imports: [

@@ -19,6 +19,11 @@ export class ProductoService {
     return this.db.collection<Producto>(this.productoCollectionName).get();
   }
 
+
+  getProductosPorPlan(planid: string): Observable<firebase.firestore.QuerySnapshot> {
+    return this.db.collection<Producto>(this.productoCollectionName, ref => ref.where('planid', "==" ,planid)).get();
+  }
+
   //Obtener todos los productos por marca
   //Se obtiene el valor desde producto.component.ts
   getProductosPorMarca(marcaid: string): Observable<firebase.firestore.QuerySnapshot> {
