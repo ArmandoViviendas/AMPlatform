@@ -24,6 +24,9 @@ import { CiudadComponent } from './ciudad/ciudad.component';
 import { RegionComponent } from './region/region.component';
 import { TiendaComponent } from './tienda/tienda.component';
 
+import { MetricasProComponent} from './metricas-pro/metricas-pro.component';
+
+
 const routes: Routes = [
   {path: '', component:LoginComponent,canActivate: [AuthGuard]},
   {path: 'dashboard', component:DashboardComponent,canActivate: [AuthGuard]},
@@ -36,6 +39,7 @@ const routes: Routes = [
   {path: 'Cliente', component:ClienteComponent},
   {path: 'Plan', component:PlanComponent},
   {path: 'Proyecto', component:ProyectoComponent},
+  {path: 'MetricasProductos', component:MetricasProComponent},
   {path: 'Cadena', component:CadenaComponent},
   {path: 'Formato', component:FormatoComponent},
   {path: 'Canal', component:CanalComponent},

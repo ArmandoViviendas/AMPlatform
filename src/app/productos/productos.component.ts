@@ -15,31 +15,35 @@ import { PlanViewModel } from '../models/plan-view-model';
 })
 export class ProductosComponent implements OnInit {
 
+  //Variables públicas para asignar valores del select
   public marca: any;
   public marcaid: string;
   public marcadsc: string;
-  public selectedValue: string= "Seleccione una marca";
 
+  //Variables públicas para asignar valores del select
   public plan: any;
   public planid: string;
   public plandsc: string;
-  public selectedValueP: string= "Seleccione un plan";
+
+  public selectedValue: string= "Seleccione una marca";//Valiable asignada para no mostrar el select vacío
+  public selectedValueP: string= "Seleccione un plan";//Valiable asignada para no mostrar el select vacío
 
 
   productos: ProductoViewModel[] = [];
   marcas: MarcaViewModel[] = [];
   planes: PlanViewModel[] = [];
 
-
+  //Inyección de servicios
   constructor(private modalService: NgbModal,
     private productoService: ProductoService,
     private marcaService: MarcaService,
     private planService: PlanService) { }
 
+    //Consulta por default  
   ngOnInit() {
     this.loadPlanes();
   }
-
+    //Consultar productos por marca
     loadProductosPorMarca() {
       this.productoService.getProductosPorMarca(this.marcaid).subscribe(response => {
         this.productos = [];
@@ -58,7 +62,7 @@ export class ProductosComponent implements OnInit {
         });
       });
     }
-
+      //Consultar marcas por plan
       loadMarcas() {
         this.marcaService.getMarcasPorPlan(this.planid).subscribe(response => {
           this.marcas = [];
@@ -77,7 +81,7 @@ export class ProductosComponent implements OnInit {
         });
       }
     
-
+      //Consulta todos los planes
       loadPlanes() {
         this.planService.getPlanes().subscribe(response => {
           this.planes = [];
@@ -95,9 +99,10 @@ export class ProductosComponent implements OnInit {
         });
       }
   
-
+  //Función encargada de abril el modal en su modo de creación
   clickAddProducto() {
     const modal = this.modalService.open(ProductosFormComponent);
+    //Variables obtenidas del select mandadas al modal
     modal.componentInstance.marcaid = this.marcaid;
     modal.componentInstance.marcadsc = this.marcadsc;
     modal.componentInstance.planid = this.planid;
@@ -108,6 +113,8 @@ export class ProductosComponent implements OnInit {
     )
   }
 
+  /*Funcion que se ejecuta a cerrar el modal y dependiedo
+   el valor createMode crea un nuevo documento o busca el documento a editar*/
   handleModalProductoFormClose(response) {
     // is response an object?
     if (response === Object(response)) {
@@ -121,7 +128,7 @@ export class ProductosComponent implements OnInit {
     }
   }
 
-
+  //Función encargada de abril el modal en su modo de edición
   handleEditClick(producto: ProductoViewModel) {
     const modal = this.modalService.open(ProductosFormComponent);
     modal.result.then(
@@ -132,6 +139,7 @@ export class ProductosComponent implements OnInit {
     modal.componentInstance.producto = producto;
   }
 
+  //Función para ejecutar el servicio que elimina el producto
   handleDeleteClick(productoId: string, index: number) {
     this.productoService.deleteProducto(productoId)
       .then(() => {
@@ -140,6 +148,7 @@ export class ProductosComponent implements OnInit {
       .catch(err => console.error(err));
   }
 
+  //Funcion para asignar variables provenientes del select de la marca
   public ver(value): object {
     console.log("Objeto marca",value);
     this.marca = value;
@@ -149,6 +158,7 @@ export class ProductosComponent implements OnInit {
     return value;
   }
 
+  //Funcion para asignar variables provenientes del select del plan
   public verP(value): object {
     console.log("Objeto plan",value);
     this.plan = value;

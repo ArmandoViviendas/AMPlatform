@@ -1,0 +1,80 @@
+<div class="loading" lang="en" data-textdirection="ltr" id="html">
+        <div class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns" id="body">
+        <app-nav></app-nav>
+        <div class="app-content content">
+            <div class="content-wrapper">
+                <div class="content-wrapper-before"></div>
+                <div class="content-header row">
+                    <div class="content-header-left col-md-4 col-12 mb-2">
+                        <h3 class="content-header-title">Metricas productos</h3>
+                    </div>
+                </div>
+                <div class="content-body">
+                    <section id="global-settings" class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+    
+                                    <select [(ngModel)]="selectedValuePla" (change)="verPla(selectedValuePla)" style="margin-right: 30px;">
+                                            <option selected>Seleccione un plan</option>
+                                            <option *ngFor="let plan of planes" [ngValue]="plan" >{{plan.plandsc}}</option>
+                                    </select>
+
+                                    <select [(ngModel)]="selectedValueProyec" (change)="verProyec(selectedValueProyec)" style="margin-right: 30px;">
+                                            <option selected>Seleccione un proyecto</option>
+                                            <option *ngFor="let pro of ProyectoI" [ngValue]="pro" >{{pro.proyectodsc}}</option>
+                                    </select>
+
+                                    <select [(ngModel)]="selectedValueMetrica" (change)="verMetricas(selectedValueMetrica)" style="margin-right: 30px;">
+                                            <option selected>Seleccione una métrica</option>
+                                            <option *ngFor="let metrica of metricas" [ngValue]="metrica" >{{metrica.metricadsc}}</option>
+                                    </select>
+
+                                    <select [(ngModel)]="selectedValueProducto" (change)="verProducto(selectedValueProducto)" style="margin-right: 30px;">
+                                            <option selected>Seleccione un producto</option>
+                                            <option *ngFor="let producto of productos" [ngValue]="producto" >{{producto.productodsc}}</option>
+                                    </select>
+                                    
+                                <button class="btn btn-primary" (click)="saveAsignacion()"style="float: right;">Asignar</button>
+    
+                    <table class="table table-striped" *ngIf="metricaspp && metricaspp.length > 0 ">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Proyecto</th>
+                                    <th>Producto</th>
+                                    <th>Métrica</th>
+                                    <th>Tipo</th>
+                                    <th>Dato valido</th>
+                                    <th>Obligatorio</th>
+                                    <th>Acciones</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let metricapp of metricaspp, let index = index">
+                                    <td [ngClass]="{'done': metricapp.done, 'not-done': !metricapp.done}">{{metricapp.id}}</td>
+                                    <td [ngClass]="{'done': metricapp.done, 'not-done': !metricapp.done}">{{metricapp.proyectodsc}}</td>
+                                    <td [ngClass]="{'done': metricapp.done, 'not-done': !metricapp.done}">{{metricapp.productodsc}}</td>
+                                    <td [ngClass]="{'done': metricapp.done, 'not-done': !metricapp.done}">{{metricapp.metricadsc}}</td>
+                                    <td [ngClass]="{'done': metricapp.done, 'not-done': !metricapp.done}">{{metricapp.datovalidotipo}}</td>
+                                    <td [ngClass]="{'done': metricapp.done, 'not-done': !metricapp.done}">{{metricapp.datovalido}}</td>
+                                    <td [ngClass]="{'done': metricapp.done, 'not-done': !metricapp.done}">{{metricapp.obligatorio}}</td>
+                                    <td>
+                                        <button class="btn btn-primary" (click)="handleEditClick(marca)">Editar</button>
+                                        <button class="btn btn-danger" (click)="handleDeleteClick(marca.id, index)">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                    </table>
+    
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+            </div>
+        </div>
+        </div>
+        </div>
+        
+    

@@ -33,6 +33,7 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { PlanComponent } from './plan/plan.component';
 import { ProyectoComponent } from './proyecto/proyecto.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { MetricasProComponent } from './metricas-pro/metricas-pro.component';
 
 import { CadenaComponent } from './cadena/cadena.component';
 import { FormatoComponent } from './formato/formato.component';
@@ -41,6 +42,7 @@ import { EstadoComponent } from './estado/estado.component';
 import { CiudadComponent } from './ciudad/ciudad.component';
 import { RegionComponent } from './region/region.component';
 import { TiendaComponent } from './tienda/tienda.component';
+import { MetricasProFormComponent } from './metricas-pro-form/metricas-pro-form.component';
 
 @NgModule({
   declarations: [
@@ -61,13 +63,15 @@ import { TiendaComponent } from './tienda/tienda.component';
     ClienteComponent,
     PlanComponent,
     ProyectoComponent,
+    MetricasProComponent,
     CadenaComponent,
     FormatoComponent,
     CanalComponent,
     EstadoComponent,
     CiudadComponent,
     RegionComponent,
-    TiendaComponent
+    TiendaComponent,
+    MetricasProFormComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

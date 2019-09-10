@@ -34,10 +34,12 @@ export class CorporativoComponent implements OnInit {
   /**funcion para eliminar los corporativos*/
   onDeleteCorporativo(idCorporativo: string) {
     /**Mensaje de confirmacion para eliminar*/
+
     const confirmacion = confirm('estas seguro?');
     /**si la confirmacion es positiva se manda al servicio si no no hace nada*/
     if(confirmacion){
       /**sellecionar funcion del servicio y mandar el id*/
+
       this.corporativoS.deleteCorporativo(idCorporativo);
     }
   }

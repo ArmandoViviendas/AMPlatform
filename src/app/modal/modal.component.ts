@@ -19,6 +19,7 @@ import { ProyectoInterface } from '../models/proyecto';
 import { CadenaService } from '../shared/services/cadenas/cadena.service';
 import { CadenaInterface } from '../models/cadena';
 
+
 /** Formato */
 import { FormatoService } from '../shared/services/formato/formato.service';
 import { FormatoInterface } from '../models/formato';
@@ -78,6 +79,7 @@ export class ModalComponent implements OnInit {
     public selectedCiudad: any = 'Seleccionar Ciudad';
     public selectedRegion: any = 'Seleccionar Region';
 
+
   ngOnInit() {
     this.getListCanal();
     this.getListCadenas();
@@ -136,6 +138,7 @@ export class ModalComponent implements OnInit {
       this.cadenaservice.addCadena(cadenaForm.value);
     }else {
       //modificar
+
       this.cadenaservice.updateCadena(cadenaForm.value);
     }
   }
@@ -147,6 +150,7 @@ export class ModalComponent implements OnInit {
       this.formatoservice.addFormato(formatoForm.value);
     }else {
       //modificar
+
       this.formatoservice.updateFormato(formatoForm.value);
     }
   }

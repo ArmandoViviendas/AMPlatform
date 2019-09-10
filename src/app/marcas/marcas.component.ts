@@ -13,26 +13,32 @@ import { PlanService } from '../services/plan.service';
 })
 export class MarcasComponent implements OnInit {
 
+  //Variables públicas para asignar valores del select
   public plan: any;
   public planid: string;
   public plandsc: string;
 
+  //Valiable asignada para no mostrar el select vacío
   public selectedValue: string= "Seleccione un plan";
 
   
-
+  //Inyección de servicios
   constructor(private modalService: NgbModal,
     private marcaService: MarcaService,
     private planService: PlanService) { }
 
+  //Consulta por default
   ngOnInit() {
     this.loadPlanes();
   }
 
+  //Consulta marcas por plan
   marcas: MarcaViewModel[] = [];
     loadMarcaPorplan() {
       this.marcaService.getMarcasPorPlan(this.planid).subscribe(response => {
+        //Hacemos la petición al servidor
         this.marcas = [];
+        //Recorremos el arreglo 
         response.docs.forEach(value => {
           const data = value.data();
           const id = value.id;
@@ -48,6 +54,7 @@ export class MarcasComponent implements OnInit {
       });
     }
     
+  //Consulta todos los planes
   planes: PlanViewModel[] = [];
   loadPlanes() {
       this.planService.getPlanes().subscribe(response => {
@@ -67,9 +74,10 @@ export class MarcasComponent implements OnInit {
       });
     }
   
-
+  //Función encargada de abril el modal en su modo de creación
   clickAddMarca() {
     const modal = this.modalService.open(MarcasFormComponent);
+    //Variables obtenidas del select mandadas al modal
     modal.componentInstance.planid = this.planid;
     modal.componentInstance.plandsc = this.plandsc;
     modal.result.then(
@@ -78,6 +86,8 @@ export class MarcasComponent implements OnInit {
     )
   }
 
+  /*Funcion que se ejecuta a cerrar el modal y dependiedo
+   el valor createMode crea un nuevo documento o busca el documento a editar*/
   handleModalMarcaFormClose(response) {
 
     if (response === Object(response)) {
@@ -91,7 +101,7 @@ export class MarcasComponent implements OnInit {
     }
   }
 
-
+  //Función encargada de abril el modal en su modo de edición
   handleEditClick(marca: MarcaViewModel) {
     const modal = this.modalService.open(MarcasFormComponent);
     modal.result.then(
@@ -102,6 +112,7 @@ export class MarcasComponent implements OnInit {
     modal.componentInstance.marca = marca;
   }
 
+  //Función para ejecutar el servicio que elimina la marca
   handleDeleteClick(marcaId: string, index: number) {
     this.marcaService.deleteMarca(marcaId)
       .then(() => {
@@ -110,6 +121,7 @@ export class MarcasComponent implements OnInit {
       .catch(err => console.error(err));
   }
 
+  //Funcion para asignar variables provenientes del select del plan
   public ver(value): object {
     console.log(value);
     this.plan = value;

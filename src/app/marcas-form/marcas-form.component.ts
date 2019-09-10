@@ -13,14 +13,15 @@ import { Marca } from '../models/marca';
 })
 export class MarcasFormComponent implements OnInit {
 
-  marcaForm: FormGroup;
-  createMode: boolean = true;
-  marca: MarcaViewModel;
+  marcaForm: FormGroup; //Variable necesaria para la creación de un modal
+  createMode: boolean = true; //Variable para indicar si el titulo del modal sera de creación o de edición
+  marca: MarcaViewModel; //Interfaz para creación o modificación del registro según el caso
 
   constructor(private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
     private marcaService: MarcaService) { }
 
+  //Validadores (valores de llanado obligatorio) 
   ngOnInit() {
     this.marcaForm = this.formBuilder.group({
       marcadsc: ['', Validators.required],
@@ -33,15 +34,17 @@ export class MarcasFormComponent implements OnInit {
     }
   }
 
+  //Carga de la información en caso de edición
   loadMarca(marca){
     this.marcaForm.patchValue(marca)
   }
 
+  //Funcion encargada la recibir valores del select y ejecución del servicio
   saveMarca(planid: string,plandsc:string) {
     if (this.marcaForm.invalid) {
       return;
     }
-
+    //Caso creación de registro
     if (this.createMode){
       let marca: Marca = this.marcaForm.value;
       marca.planid = planid;
@@ -49,7 +52,9 @@ export class MarcasFormComponent implements OnInit {
       this.marcaService.saveMarca(marca)
       .then(response => this.handleSuccessfulSaveMarca(response, marca))
       .catch(err => console.error(err));
-    } else{
+    } 
+    //Caso edición de registro
+    else{
       let marca: MarcaViewModel = this.marcaForm.value;
       marca.id = this.marca.id;
       this.marcaService.editMarca(marca)
@@ -58,9 +63,11 @@ export class MarcasFormComponent implements OnInit {
     }
 
   }
+
   handleSuccessfulSaveMarca(response: DocumentReference, marca: Marca) {
     this.activeModal.dismiss({ marca: marca, id: response.id, createMode: true});
   }
+
 
   handleSuccessfulEditMarca(marca: MarcaViewModel) {
     this.activeModal.dismiss({ marca: marca, id: marca.id, createMode: false });

@@ -34,7 +34,7 @@
                                     
                                 <button class="btn btn-primary" (click)="clickAddMetrica()"style="float: right;">Agregar métrica</button>
     
-    <table class="table table-striped">
+    <table class="table table-striped" *ngIf="metricas && metricas.length > 0 ">
         <thead>
             <tr>
                 <th>Id</th>
