@@ -338,3 +338,113 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Tienda -->
+<div class="modal fade" id="ModalTienda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Region</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="formTienda" #formTienda="ngForm" (ngSubmit)="onSaveTienda(formTienda)">
+                    <input type="text" name="idtienda">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="message-text" class="col-form-label">Cadena:</label>
+                            <select class="form-control" [(ngModel)]="selectedCadena" (change)="getListFormato()" name="cadena">
+                                <option selected>Seleccionar Cadena</option>
+                                <option *ngFor="let cadena of cadenaI" [ngValue]="cadena">
+                                    {{cadena.cadenadsc}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="message-text" class="col-form-label">Formato:</label>
+                            <select class="form-control" [(ngModel)]="selectedFormato" name="formato">
+                                <option selected>Seleccionar Formato</option>
+                                <option *ngFor="let formato of formatoI" [ngValue]="formato">
+                                    {{formato.formatodsc}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="message-text" class="col-form-label">Estado:</label><br>
+                            <select class="form-control" [(ngModel)]="selectedEstado" name="estado" (change)="getListCiudad()">
+                                <option selected>Seleccionar Estado</option>
+                                <option *ngFor="let estado of estadoI" [ngValue]="estado">
+                                    {{estado.estadodsc}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="message-text" class="col-form-label">Ciudad:</label><br>
+                            <select class="form-control" [(ngModel)]="selectedCiudad" name="ciudad">
+                                <option selected>Seleccionar Ciudad</option>
+                                <option *ngFor="let ciudad of ciudadI" [ngValue]="ciudad">
+                                    {{ciudad.ciudaddsc}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="message-text" class="col-form-label">Canal:</label>
+                            <select class="form-control" [(ngModel)]="selectedCanal" name="canal">
+                                <option selected>Seleccionar Canal</option>
+                                <option *ngFor="let canal of canalI" [ngValue]="canal">
+                                    {{canal.canaldsc}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="message-text" class="col-form-label">Region:</label>
+                            <select class="form-control" [(ngModel)]="selectedRegion" name="region">
+                                <option selected>Seleccionar Region</option>
+                                <option *ngFor="let region of regionI" [ngValue]="region">
+                                    {{region.regiondsc}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="sucursal" class="col-form-label">Sucursal:</label>
+                            <input type="text" class="form-control" name="sucursal" [(ngModel)]="this.tiendaservice.selectedTienda.sucursal">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="calle" class="col-form-label">Calle:</label>
+                            <input type="text" class="form-control" name="calle" [(ngModel)]="this.tiendaservice.selectedTienda.calle">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="Colonia" class="col-form-label">Colonia:</label>
+                            <input type="text" class="form-control" name="Colonia" [(ngModel)]="this.tiendaservice.selectedTienda.colonia">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="cp" class="col-form-label">CP:</label>
+                            <input type="text" class="form-control" name="cp" [(ngModel)]="this.tiendaservice.selectedTienda.cp">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="latitud" class="col-form-label">Latitud:</label>
+                            <input type="text" class="form-control" name="latitud" [(ngModel)]="this.tiendaservice.selectedTienda.latitud">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="longitud" class="col-form-label">Longitud:</label>
+                            <input type="text" class="form-control" name="longitud" [(ngModel)]="this.tiendaservice.selectedTienda.longitud">
+                        </div>
+                        <div class="col-md-6"> 
+                            <label for="message-text" class="col-form-label">Activo:</label><br>
+                            <select name="activo" class="form-control" [(ngModel)]="this.tiendaservice.selectedTienda.activo">
+                                <option value="true" selected>Si</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

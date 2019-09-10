@@ -1,0 +1,92 @@
+<div class="loading" lang="en" data-textdirection="ltr" id="html">
+    <div class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns" id="body">
+        <app-nav></app-nav>
+        <div class="app-content content">
+            <div class="content-wrapper">
+                <div class="content-wrapper-before"></div>
+                <div class="content-header row">
+                    <div class="content-header-left col-md-4 col-12 mb-2">
+                        <h3 class="content-header-title">juan@controlplus.mx</h3>
+                    </div>
+                </div>
+                <div class="content-body">
+                    <section id="global-settings" class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Tiendas</h4>
+                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h1 for="Corporativo">Corporativos</h1>
+                                <select class="form-control" [(ngModel)]="selectedCorporativo" (change)="getListClientes()">
+                                    <option selected>Seleccionar Corporativo</option>
+                                    <option *ngFor="let corp of corporativo" [ngValue]="corp">
+                                        {{corp.corporativodsc}}
+                                </option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <h1 for="Cliente">Cliente</h1>
+                                <select class="form-control" [(ngModel)]="selectedCliente" (change)="getListTiendas()">
+                                    <option selected>Seleccionar Cliente</option>
+                                    <option *ngFor="let cli of clienteI" [ngValue]="cli">
+                                        {{cli.clientedsc}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#ModalTienda">Agregar</button>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead><!--class="thead-dark"-->
+                                            <tr>
+                                                <th scope="col" >#</th>
+                                                <th scope="col">Sucursal</th>
+                                                <th scope="col">Canal</th>
+                                                <th scope="col">Cadena</th>
+                                                <th scope="col">Formato</th>
+                                                <th scope="col">Estado</th>
+                                                <th scope="col">Ciudad</th>
+                                                <th scope="col">Region</th>
+                                                <th scope="col">Calle</th>
+                                                <th scope="col">Colonia</th>
+                                                <th scope="col">CP</th>
+                                                <th scope="col">Latitud</th>
+                                                <th scope="col">Longitud</th>
+                                                <th scope="col">Activo</th>
+                                                <th colspan="2" scope="col">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let tienda of TiendaI"> 
+                                                <th scope="row">{{tienda.idT}}</th>
+                                                <td>{{tienda.sucursal}}</td>
+                                                <td>{{tienda.canaldsc}}</td>
+                                                <td>{{tienda.cadenadsc}}</td>
+                                                <td>{{tienda.formatodsc}}</td>
+                                                <td>{{tienda.estadodsc}}</td>
+                                                <td>{{tienda.ciudaddsc}}</td>
+                                                <td>{{tienda.regiondsc}}</td>
+                                                <td>{{tienda.calle}}</td>
+                                                <td>{{tienda.colonia}}</td>
+                                                <td>{{tienda.cp}}</td>
+                                                <td>{{tienda.latitud}}</td>
+                                                <td>{{tienda.longitud}}</td>
+                                                <td>{{tienda.activo}}</td>
+                                                <td><button class="btn btn-primary" (click)=onPreUpdateTienda(tienda) data-toggle="modal" data-target="#ModalTienda">Editar</button></td>
+                                                <td><button class="btn btn-danger" (click)="onDeleteTienda(tienda.idT)">Eliminar</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-modal></app-modal>
