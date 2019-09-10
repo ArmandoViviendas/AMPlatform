@@ -1,3 +1,10 @@
-.done{
-    text-decoration: line-through;
+h1{
+    font-size: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+select{
+    margin-left: 10px;
+    width: 300px;
 }

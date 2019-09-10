@@ -31,7 +31,6 @@ export class FormatoComponent implements OnInit {
   public selectedCadena: any = 'Seleccionar Cadena';
 
   /**funcion que va a iniciar al cargar la pagina*/
-
   ngOnInit() {
     this.getcadenas();
   }
@@ -52,7 +51,6 @@ export class FormatoComponent implements OnInit {
     /**si la confirmacion es positiva se manda al servicio si no no hace nada*/
     if(confirmacion){
       /**sellecionar funcion del servicio y mandar el id*/
-
       this.formatoservice.deleteFormato(idformato);
     }
   }
@@ -64,7 +62,6 @@ export class FormatoComponent implements OnInit {
   }
 
   /**funcion para listar las cadenas para el select*/
-
   getcadenas() {
     this.cadenaservice.getAllCadenas().subscribe( response  => {
       this.cadenaI = response;

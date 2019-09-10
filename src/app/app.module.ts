@@ -41,8 +41,8 @@ import { CanalComponent } from './canal/canal.component';
 import { EstadoComponent } from './estado/estado.component';
 import { CiudadComponent } from './ciudad/ciudad.component';
 import { RegionComponent } from './region/region.component';
+import { TiendaComponent } from './tienda/tienda.component';
 import { MetricasProFormComponent } from './metricas-pro-form/metricas-pro-form.component';
-
 
 @NgModule({
   declarations: [
@@ -70,8 +70,8 @@ import { MetricasProFormComponent } from './metricas-pro-form/metricas-pro-form.
     EstadoComponent,
     CiudadComponent,
     RegionComponent,
+    TiendaComponent,
     MetricasProFormComponent
-
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

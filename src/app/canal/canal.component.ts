@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 /**importa el servicio de canal*/
 import { CanalService } from '../shared/services/canal/canal.service';
 /**importa la interface de canal*/
-
 import { CanalInterface } from '../models/canal';
 import { NgForm } from '@angular/forms';
 
@@ -19,7 +18,6 @@ export class CanalComponent implements OnInit {
   private canalI: CanalInterface[];
 
   /**funcion que va a iniciar al cargar la pagina*/
-
   ngOnInit() {
     this.getListCanal();
   }
@@ -29,7 +27,6 @@ export class CanalComponent implements OnInit {
     /**sellecionar funcion del servicio*/
     this.canalservice.getAllCanales().subscribe( response  => {
       /**se asigna el resultado a la variable canalI */
-
       this.canalI = response;
     })
   };
@@ -41,7 +38,6 @@ export class CanalComponent implements OnInit {
     /**si la confirmacion es positiva se manda al servicio si no no hace nada*/
     if(confirmacion){
       /**sellecionar funcion del servicio y mandar el id*/
-
       this.canalservice.deleteCanal(idcanal);
     }
   }
@@ -49,7 +45,6 @@ export class CanalComponent implements OnInit {
   /**funcion para modificar los canales*/
   onPreUpdateCanal(canal: CanalInterface){
     /**sellecionar funcion del servicio y mandar la informacion*/
-
     this.canalservice.selectedCanal = Object.assign({}, canal);
   }
 }

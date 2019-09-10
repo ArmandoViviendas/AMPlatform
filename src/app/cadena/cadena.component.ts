@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 /**importa el servicio de cadena*/
 import { CadenaService } from '../shared/services/cadenas/cadena.service';
 /**importa la interface de cadena*/
-
 import { CadenaInterface } from '../models/cadena';
 import { NgForm } from '@angular/forms';
 
@@ -19,7 +18,6 @@ export class CadenaComponent implements OnInit {
   private cadenaI: CadenaInterface[];
 
   /**funcion que va a iniciar al cargar la pagina*/
-
   ngOnInit() {
     this.getListCadenas();
   }
@@ -29,7 +27,6 @@ export class CadenaComponent implements OnInit {
     /**sellecionar funcion del servicio*/
     this.cadenaservice.getAllCadenas().subscribe( response  => {
       /**se asigna el resultado a la variable cadenaI */
-
       this.cadenaI = response;
     })
   };
@@ -41,9 +38,6 @@ export class CadenaComponent implements OnInit {
     /**si la confirmacion es positiva se manda al servicio si no no hace nada*/
     if(confirmacion){
       /**sellecionar funcion del servicio y mandar el id*/
-
-
-
       this.cadenaservice.deleteCadena(idcadena);
     }
   }
