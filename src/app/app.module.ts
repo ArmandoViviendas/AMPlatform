@@ -86,6 +86,6 @@ import { MetricasProFormComponent } from './metricas-pro-form/metricas-pro-form.
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
-  entryComponents: [MarcasFormComponent,ProductosFormComponent,MetricasFormComponent],
+  entryComponents: [MarcasFormComponent,ProductosFormComponent,MetricasFormComponent,MetricasProFormComponent],
 })
 export class AppModule { }

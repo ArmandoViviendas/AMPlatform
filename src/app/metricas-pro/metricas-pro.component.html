@@ -60,8 +60,8 @@
                                     <td [ngClass]="{'done': metricapp.done, 'not-done': !metricapp.done}">{{metricapp.datovalido}}</td>
                                     <td [ngClass]="{'done': metricapp.done, 'not-done': !metricapp.done}">{{metricapp.obligatorio}}</td>
                                     <td>
-                                        <button class="btn btn-primary" (click)="handleEditClick(marca)">Editar</button>
-                                        <button class="btn btn-danger" (click)="handleDeleteClick(marca.id, index)">Eliminar</button>
+                                        <button class="btn btn-primary" (click)="handleEditClick(metricapp)">Editar</button>
+                                        <button class="btn btn-danger" (click)="handleDeleteClick(metricapp.id, index)">Eliminar</button>
                                     </td>
                                 </tr>
                             </tbody>

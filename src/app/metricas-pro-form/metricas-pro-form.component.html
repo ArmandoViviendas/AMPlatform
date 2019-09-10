@@ -1,1 +1,36 @@
-<p>metricas-pro-form works!</p>
+<div class="modal-header">
+        <h4 class="modal-title">{{createMode ? 'Crear Asigación' : 'Editar Asignación'}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="metricaForm" (ngSubmit)="saveMetrica()">
+      
+          
+
+            <div class="form-group">
+                <label for="datovalido">Obligatorio</label>
+                <select [(ngModel)]=datovalidoS id="datovalido" class="form-control" formControlName="datovalido">
+                    <option *ngFor="let tipo of tipos" [ngValue]="tipo.descripcion" >{{tipo.descripcion}}</option>
+                </select> 
+              </div>
+          
+
+
+              <div class="form-group">
+                  <label for="obligatorio">Obligatorio</label>
+                  <select [(ngModel)]=obligatorioS id="obligatorio" class="form-control" formControlName="obligatorio">
+                      <option value="Si" selected>Si</option>
+                      <option value="No">No</option>
+                  </select> 
+                </div>
+      
+      
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+        <button class="btn btn-primary" (click)="saveMetrica()" [disabled]="metricaForm.invalid">Guardar</button>
+      </div>
+      

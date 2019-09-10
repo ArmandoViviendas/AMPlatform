@@ -12,6 +12,7 @@ import { MetricaproyectoproductoService} from '../services/metricaproyectoproduc
 import { MetricaproyectoproductoViewModel } from '../models/metricaproyectoproducto-view-model';
 import { DocumentReference } from 'angularfire2/firestore';
 import { Metricaproyectoproducto } from '../models/metricaproyectoproducto';
+import { MetricasProFormComponent } from '../metricas-pro-form/metricas-pro-form.component';
 
 @Component({
   selector: 'app-metricas-pro',
@@ -177,6 +178,41 @@ export class MetricasProComponent implements OnInit {
     } else {
       alert("Debes de seleccionar un plan antes");
   }
+  }
+
+  /*Funcion que se ejecuta a cerrar el modal y dependiedo
+   el valor createMode crea un nuevo documento o busca el documento a editar*/
+   handleModalMetricaPPFormClose(response) {
+
+    if (response === Object(response)) {
+      if (response.createMode) {
+        response.metricapp.id = response.id;
+        this.metricaspp.unshift(response.metricapp);
+      } else {
+        let index = this.metricaspp.findIndex(value => value.id == response.id);
+        this.metricaspp[index] = response.metricapp;
+      }
+    }
+  }
+
+  //Función encargada de abril el modal en su modo de edición
+  handleEditClick(metricapp: MetricaproyectoproductoViewModel) {
+    const modal = this.modalService.open(MetricasProFormComponent);
+    modal.result.then(
+      this.handleModalMetricaPPFormClose.bind(this),
+      this.handleModalMetricaPPFormClose.bind(this)
+    )
+    modal.componentInstance.createMode = false;
+    modal.componentInstance.metricapp = metricapp;
+  }
+
+  //Función para ejecutar el servicio que elimina la marca
+  handleDeleteClick(metricappId: string, index: number) {
+    this.metricappService.deleteMetricaPP(metricappId)
+      .then(() => {
+        this.metricaspp.splice(index, 1);
+      })
+      .catch(err => console.error(err));
   }
     
     //Funcion para asignar variables provenientes del select del plan
