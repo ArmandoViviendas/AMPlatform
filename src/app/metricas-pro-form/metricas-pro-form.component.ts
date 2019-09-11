@@ -20,6 +20,9 @@ export class MetricasProFormComponent implements OnInit {
   createMode: boolean = true; //Variable para indicar si el titulo del modal sera de creación o de edición
   metricapp: MetricaproyectoproductoViewModel;
 
+  /*Variables necesarias para tomar los datos del objeto mandado 
+  en el componente anterior y utilizarlas como valor predeterminado 
+  en los select*/
   public datovalidoS: String;
   public obligatorioS: String;
 
@@ -47,6 +50,7 @@ export class MetricasProFormComponent implements OnInit {
 //Carga de la información en caso de edición
 loadMetrica(metricapp){
   this.metricaForm.patchValue(metricapp)
+  //Asignación de valores predeterminados para los select
   this.datovalidoS = metricapp.datovalido;
   this.obligatorioS = metricapp.obligatorio;
 }

@@ -138,10 +138,19 @@ export class MetricasProComponent implements OnInit {
             metricadsc: data.metricadsc,
             datovalidotipo: data.datovalidotipo,
             datovalido: data.datovalido,
-            obligatorio: data.obligatorio
+            obligatorio: data.obligatorio,
+            //Valores no ocupados en tabla
+            metricaid: data.metricaid,
+            proyectoid: data.proyectoid,
+            productoid: data.productoid,
+            activo: data.activo,
+            datovalidoid: data.datovalidoid
           };
           this.metricaspp.push(metricapp);
         });
+
+        console.log("Metricas conection",JSON.stringify(this.metricaspp));
+
       });
     }
 
