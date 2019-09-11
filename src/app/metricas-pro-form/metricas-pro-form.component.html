@@ -10,12 +10,11 @@
           
 
             <div class="form-group">
-                <label for="datovalido">Obligatorio</label>
-                <select [(ngModel)]=datovalidoS id="datovalido" class="form-control" formControlName="datovalido">
+                <label for="datovalido">Dato valido</label>
+                <select [(ngModel)]=datovalidoS id="datovalido" class="form-control" formControlName="datovalido" >
                     <option *ngFor="let tipo of tipos" [ngValue]="tipo.descripcion" >{{tipo.descripcion}}</option>
                 </select> 
               </div>
-          
 
 
               <div class="form-group">

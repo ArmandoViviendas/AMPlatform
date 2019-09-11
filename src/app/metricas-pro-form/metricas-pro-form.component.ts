@@ -25,6 +25,7 @@ export class MetricasProFormComponent implements OnInit {
   en los select*/
   public datovalidoS: String;
   public obligatorioS: String;
+  public datovalidoSId: String;
 
   constructor(private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
@@ -35,7 +36,8 @@ export class MetricasProFormComponent implements OnInit {
  ngOnInit() {
   this.metricaForm = this.formBuilder.group({
     datovalido: ['',],
-    obligatorio: ['',]
+    obligatorio: ['',],
+    datovalidoid: ['',]
       });
 
 
@@ -53,6 +55,7 @@ loadMetrica(metricapp){
   //Asignación de valores predeterminados para los select
   this.datovalidoS = metricapp.datovalido;
   this.obligatorioS = metricapp.obligatorio;
+  this.datovalidoSId = metricapp.datovalidoid;
 }
 
 //Consulta todos los tipos de datos validos para el select
@@ -64,7 +67,7 @@ loadTipos() {
         const data = value.data();
         const id = value.id;
         const tipo: TipodatovalidoViewModel = {
-          id: id,      
+          id: id,
           descripcion: data.descripcion
         };
         this.tipos.push(tipo);
@@ -83,6 +86,7 @@ loadTipos() {
     //Caso edición de registro
     else{
       let metricapp: MetricaproyectoproductoViewModel = this.metricaForm.value;
+      console.log(metricapp);
       metricapp.id = this.metricapp.id;
       /*Las varibales acontonuación declaradas se vuelven a enviar debido a que el formulario
       y el componente de la tabla usan el mismo ViewModel y al regresar a la tabla no se 
@@ -91,10 +95,7 @@ loadTipos() {
       metricapp.productodsc = this.metricapp.productodsc;
       metricapp.metricadsc = this.metricapp.metricadsc;
       metricapp.datovalidotipo = this.metricapp.datovalidotipo;
-      //Terminan variables a enviar
-      this.metricappService.editMetricaPP(metricapp)
-        .then(() => this.handleSuccessfulEditMetricaPP(metricapp))
-        .catch(err => console.error(err));
+    
     }
 
   }

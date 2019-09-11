@@ -11,5 +11,7 @@ export interface Metricaproyectoproducto {
     datovalidoid?: string;
     activo?: string;
     obligatorio?: string;
-
+    tipo?: string;
+    marca?: string;
+    productoimg?: string;
 }

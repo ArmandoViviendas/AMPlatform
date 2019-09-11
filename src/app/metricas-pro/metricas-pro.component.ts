@@ -27,8 +27,11 @@ export class MetricasProComponent implements OnInit {
   public proyectoObj: any; public proyectoid: string; public proyectodsc: string;
 
   public metricaObj: any; public metricaid: string; public metricadsc: string;
+  public metricatipo: string;
 
   public productoObj: any; public productoid: string; public productodsc: string;
+  public productoMarca: string;
+  public productoImage: string;
 
   public selectedValuePla: any= "Seleccione un plan";//Valiable asignada para no mostrar el select vacío
   public selectedValueProyec: any= "Seleccione un proyecto";//Valiable asignada para no mostrar el select vacío
@@ -113,6 +116,7 @@ export class MetricasProComponent implements OnInit {
           const producto: ProductoViewModel = {
             id: id,
             marcaid: data.marcaid,
+            marcadsc: data.marcadsc,
             productodsc: data.productodsc,
             sku: data.sku,
             image: data.image,
@@ -144,7 +148,10 @@ export class MetricasProComponent implements OnInit {
             proyectoid: data.proyectoid,
             productoid: data.productoid,
             activo: data.activo,
-            datovalidoid: data.datovalidoid
+            datovalidoid: data.datovalidoid,
+            tipo: data.tipo,
+            marca: data.marca,
+            productoimg: data.productoimg
           };
           this.metricaspp.push(metricapp);
         });
@@ -167,11 +174,14 @@ export class MetricasProComponent implements OnInit {
                                 proyectodsc: this.proyectodsc,
                                 productoid: this.productoid,
                                 productodsc: this.productodsc,
-                                datovalidotipo: "Abierta",
+                                datovalidotipo: "Abierta",//Antes tipoDesc
                                 datovalido: "Cualquier Digito",
-                                datovalidoid: "1",
+                                datovalidoid: "1",//Antes type
                                 activo: "Activo",
-                                obligatorio: "No"
+                                obligatorio: "No",
+                                tipo: this.metricatipo,
+                                marca: this.productoMarca,
+                                productoimg: this.productoImage
                                 };
                                 this.metricappService.saveMetricaPP(metricapp);
                                 alert("Asignación de métrica correcta");
@@ -255,6 +265,7 @@ export class MetricasProComponent implements OnInit {
       this.metricaObj = valueMetrica;
       this.metricaid = this.metricaObj.id;
       this.metricadsc = this.metricaObj.metricadsc;
+      this.metricatipo = this.metricaObj.tipo;
       console.log("metricaid ",this.metricaid);
       console.log("metrica ",this.metricadsc);
       return valueMetrica;
@@ -266,8 +277,12 @@ export class MetricasProComponent implements OnInit {
       this.productoObj = valueProducto;
       this.productoid = this.productoObj.id;
       this.productodsc = this.productoObj.productodsc;
+      this.productoMarca = this.productoObj.marcadsc;
+      this.productoImage = this.productoObj.image;
       console.log("productoid ",this.productoid);
       console.log("producto ",this.productodsc);
+      console.log("productoMarca ",this.productoMarca);
+      console.log("productoImage ",this.productoImage);
       return valueProducto;
     }
 

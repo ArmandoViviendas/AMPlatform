@@ -11,4 +11,7 @@ export interface MetricaproyectoproductoViewModel {
     datovalidoid?: string;
     activo?: string;
     obligatorio?: string;
+    tipo?: string;
+    marca?: string;
+    productoimg?: string;
 } 
