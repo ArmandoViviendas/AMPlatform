@@ -156,7 +156,7 @@ export class MetricasProComponent implements OnInit {
           this.metricaspp.push(metricapp);
         });
 
-        console.log("Metricas conection",JSON.stringify(this.metricaspp));
+        //console.log("Metricas conection",JSON.stringify(this.metricaspp)); Comparación de api
 
       });
     }

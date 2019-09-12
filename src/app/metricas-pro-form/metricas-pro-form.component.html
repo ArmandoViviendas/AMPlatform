@@ -11,8 +11,8 @@
 
             <div class="form-group">
                 <label for="datovalido">Dato valido</label>
-                <select [(ngModel)]=datovalidoS id="datovalido" class="form-control" formControlName="datovalido" >
-                    <option *ngFor="let tipo of tipos" [ngValue]="tipo.descripcion" >{{tipo.descripcion}}</option>
+                <select ([ngModel])=datovalidoS id="datovalido" class="form-control" formControlName="datovalido" >
+                    <option *ngFor="let tipo of tipos" [ngValue]="tipo">{{tipo.descripcion}}</option>
                 </select> 
               </div>
 
@@ -32,4 +32,3 @@
         <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
         <button class="btn btn-primary" (click)="saveMetrica()" [disabled]="metricaForm.invalid">Guardar</button>
       </div>
-      

@@ -23,9 +23,16 @@ export class MetricasProFormComponent implements OnInit {
   /*Variables necesarias para tomar los datos del objeto mandado 
   en el componente anterior y utilizarlas como valor predeterminado 
   en los select*/
-  public datovalidoS: String;
+  public datovalidoS = {id:null,descripcion:null,tipo:null}
+
   public obligatorioS: String;
   public datovalidoSId: String;
+
+
+  //Variables para extraer del select tipo dato valido
+  id_dato: string;
+  descripcion_dato: string;
+  tipo_dato: string;
 
   constructor(private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
@@ -51,12 +58,20 @@ export class MetricasProFormComponent implements OnInit {
 
 //Carga de la información en caso de edición
 loadMetrica(metricapp){
+
   this.metricaForm.patchValue(metricapp)
-  //Asignación de valores predeterminados para los select
-  this.datovalidoS = metricapp.datovalido;
+  
+    //Asignación de valores predeterminados para los select
+    this.datovalidoS.id = metricapp.datovalidoid;
+    this.datovalidoS.descripcion = metricapp.datovalido;
+    this.datovalidoS.tipo = metricapp.datovalidotipo;
+
+  console.log("default",this.datovalidoS);
   this.obligatorioS = metricapp.obligatorio;
-  this.datovalidoSId = metricapp.datovalidoid;
+  console.log("default",this.obligatorioS);
+  
 }
+
 
 //Consulta todos los tipos de datos validos para el select
 tipos: TipodatovalidoViewModel[] = [];
@@ -68,7 +83,8 @@ loadTipos() {
         const id = value.id;
         const tipo: TipodatovalidoViewModel = {
           id: id,
-          descripcion: data.descripcion
+          descripcion: data.descripcion,
+          tipo: data.tipo
         };
         this.tipos.push(tipo);
       });
@@ -85,8 +101,27 @@ loadTipos() {
     } 
     //Caso edición de registro
     else{
+      
       let metricapp: MetricaproyectoproductoViewModel = this.metricaForm.value;
-      console.log(metricapp);
+
+      //Variable para almacenar objeto de dato tipo valido
+      let datos = this.metricaForm.value.datovalido;
+
+      /*Si el tipo de dato es undefinido significa que no selecciono ninguna opcion
+      y  se procede a utilizar los datos mandados desde el componente anterior*/
+      if (datos.tipo != null){
+      this.id_dato = datos.id;
+      this.descripcion_dato = datos.descripcion;
+      this.tipo_dato = datos.tipo;
+      console.log("Antes del servicio",datos);
+
+      }else{
+        this.id_dato = this.datovalidoS.id;
+        this.descripcion_dato = this.datovalidoS.descripcion;
+        this.tipo_dato = this.datovalidoS.tipo;
+        console.log("Antes del servicio",this.datovalidoS);
+      }
+
       metricapp.id = this.metricapp.id;
       /*Las varibales acontonuación declaradas se vuelven a enviar debido a que el formulario
       y el componente de la tabla usan el mismo ViewModel y al regresar a la tabla no se 
@@ -94,8 +129,16 @@ loadTipos() {
       metricapp.proyectodsc = this.metricapp.proyectodsc;
       metricapp.productodsc = this.metricapp.productodsc;
       metricapp.metricadsc = this.metricapp.metricadsc;
-      metricapp.datovalidotipo = this.metricapp.datovalidotipo;
-    
+
+      //Datos asignados por el select de dato valido
+      metricapp.datovalidoid = this.id_dato
+      metricapp.datovalido = this.descripcion_dato;
+      metricapp.datovalidotipo = this.tipo_dato;
+        
+         this.metricappService.editMetricaPP(metricapp)
+        .then(() => this.handleSuccessfulEditMetricaPP(metricapp))
+        .catch(err => console.error(err));
+
     }
 
   }
