@@ -43,6 +43,7 @@ import { RegionInterface } from '../models/region';
 /** Tienda */
 import { TiendaService } from '../shared/services/tiendas/tienda.service';
 import { TiendaInterface } from '../models/tienda';
+import { StringifyOptions } from 'querystring';
 
 
 @Component({
@@ -79,6 +80,19 @@ export class ModalComponent implements OnInit {
     public selectedCiudad: any = 'Seleccionar Ciudad';
     public selectedRegion: any = 'Seleccionar Region';
 
+    public cadenaid: string;
+    public cadenadsc: string;
+    public formatoid: string;
+    public formatodsc: string;
+    public estadoid: string;
+    public estadodsc: string;
+    public ciudadid: string;
+    public ciudaddsc: string;
+    public canalid: string;
+    public canaldsc: string;
+    public regionid: string;
+    public regiondsc: string;
+    public tienda: [];
 
   ngOnInit() {
     this.getListCanal();
@@ -201,15 +215,48 @@ export class ModalComponent implements OnInit {
 
   //Tienda
   onSaveTienda(tiendaForm: NgForm): void {
-    if (tiendaForm.value.idtienda == null){
+    let cadenaF = tiendaForm.value.idcadena;
+    let formatoF = tiendaForm.value.idformato;
+    let estadoF = tiendaForm.value.idestado;
+    let ciudadF = tiendaForm.value.idciudad;
+    let canalF = tiendaForm.value.idcanal;
+    let regionF = tiendaForm.value.idregion;
+
+    this.cadenaid = cadenaF.idcadena;
+    this.cadenadsc = cadenaF.cadenadsc;
+    this.formatoid = formatoF.idformato;
+    this.formatodsc = formatoF.formatodsc;
+    this.estadoid = estadoF.idestado;
+    this.estadodsc = estadoF.estadodsc;
+    this.ciudadid = ciudadF.idciudad;
+    this.ciudaddsc = ciudadF.ciudaddsc;
+    this.canalid = canalF.idcanal;
+    this.canaldsc = canalF.canaldsc;
+    this.regionid = regionF.idregion;
+    this.regiondsc = regionF.regiondsc;
+
+    tiendaForm.value.idcadena = this.cadenaid;
+    tiendaForm.value.cadenadsc = this.cadenadsc;
+    tiendaForm.value.idformato = this.formatoid;
+    tiendaForm.value.formatodsc = this.formatodsc;
+    tiendaForm.value.idestado = this.estadoid;
+    tiendaForm.value.estadodsc = this.estadodsc;
+    tiendaForm.value.idciudad = this.ciudadid;
+    tiendaForm.value.ciudaddsc = this.ciudaddsc;
+    tiendaForm.value.idcanal = this.canalid;
+    tiendaForm.value.canaldsc = this.canaldsc;
+    tiendaForm.value.idregion = this.regionid;
+    tiendaForm.value.regiondsc = this.regiondsc;
+
+    if (tiendaForm.value.idT == null){
       //guardar
       this.tiendaservice.addTienda(tiendaForm.value);
     }else {
       //modificar
       this.tiendaservice.updateTienda(tiendaForm.value);
     }
+    
   }
-
 
   //select
   getListCanal(){
