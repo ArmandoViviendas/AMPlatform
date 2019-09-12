@@ -59,11 +59,11 @@ export class TiendaService {
   /** funcion para agregar tienda */
   addTienda(tienda: TiendaInterface): void {
     /** se asignan los valores de las tabla foranea */
-    tienda.idcliente = this.clienteid;
-    tienda.clientedsc = this.clientedsc;
     tienda.idCorporativo = this.corporativoid;
     tienda.corporativodsc = this.corporativodsc;
-    
+    tienda.idcliente = this.clienteid;
+    tienda.clientedsc = this.clientedsc;
+
     this.tiendaCollection.add(tienda);
   };
 
@@ -72,6 +72,7 @@ export class TiendaService {
     let idT = tienda.idT;
     this.tiendaDoc = this.afs.doc<TiendaInterface>(`tienda/${idT}`);
     this.tiendaDoc.update(tienda);
+    
   };
 
   /** funcion para eliminar tienda */

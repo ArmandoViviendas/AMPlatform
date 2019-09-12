@@ -30,7 +30,7 @@
                                 <select class="form-control" [(ngModel)]="selectedCliente" (change)="getListTiendas()">
                                     <option selected>Seleccionar Cliente</option>
                                     <option *ngFor="let cli of clienteI" [ngValue]="cli">
-                                        {{cli.clientedsc}}
+                                         {{cli.clientedsc}}
                                     </option>
                                 </select>
                             </div>
@@ -42,7 +42,7 @@
                                     <table class="table table-hover">
                                         <thead><!--class="thead-dark"-->
                                             <tr>
-                                                <th scope="col" >#</th>
+                                                <th scope="col">#</th>
                                                 <th scope="col">Sucursal</th>
                                                 <th scope="col">Canal</th>
                                                 <th scope="col">Cadena</th>

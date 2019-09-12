@@ -22,7 +22,7 @@
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
@@ -58,7 +58,7 @@
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
@@ -92,7 +92,7 @@
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
@@ -126,7 +126,7 @@
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
@@ -160,7 +160,7 @@
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
@@ -194,7 +194,7 @@
                         </select>
                     </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
@@ -230,7 +230,7 @@
                         </select>
                     </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
@@ -265,7 +265,7 @@
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
@@ -299,7 +299,7 @@
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
@@ -333,7 +333,7 @@
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
@@ -354,59 +354,59 @@
             </div>
             <div class="modal-body">
                 <form name="formTienda" #formTienda="ngForm" (ngSubmit)="onSaveTienda(formTienda)">
-                    <input type="text" name="idtienda">
+                    <input type="text" name="idT" [(ngModel)]="this.tiendaservice.selectedTienda.idT" hidden>
                     <div class="row">
                         <div class="col-md-6">
                             <label for="message-text" class="col-form-label">Cadena:</label>
-                            <select class="form-control" [(ngModel)]="selectedCadena" (change)="getListFormato()" name="cadena">
+                            <select class="form-control" [(ngModel)]="selectedCadena" (change)="getListFormato()" name="idcadena">
                                 <option selected>Seleccionar Cadena</option>
-                                <option *ngFor="let cadena of cadenaI" [ngValue]="cadena">
-                                    {{cadena.cadenadsc}}
+                                <option *ngFor="let idcadena of cadenaI" [ngValue]="idcadena">
+                                    {{idcadena.cadenadsc}}
                                 </option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label for="message-text" class="col-form-label">Formato:</label>
-                            <select class="form-control" [(ngModel)]="selectedFormato" name="formato">
+                            <select class="form-control" [(ngModel)]="selectedFormato" name="idformato">
                                 <option selected>Seleccionar Formato</option>
-                                <option *ngFor="let formato of formatoI" [ngValue]="formato">
-                                    {{formato.formatodsc}}
+                                <option *ngFor="let idformato of formatoI" [ngValue]="idformato">
+                                    {{idformato.formatodsc}}
                                 </option>
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label for="message-text" class="col-form-label">Estado:</label><br>
-                            <select class="form-control" [(ngModel)]="selectedEstado" name="estado" (change)="getListCiudad()">
+                            <label for="message-text" class="col-form-label">Estado:</label>
+                            <select class="form-control" [(ngModel)]="selectedEstado" name="idestado" (change)="getListCiudad()">
                                 <option selected>Seleccionar Estado</option>
-                                <option *ngFor="let estado of estadoI" [ngValue]="estado">
-                                    {{estado.estadodsc}}
+                                <option *ngFor="let idestado of estadoI" [ngValue]="idestado">
+                                    {{idestado.estadodsc}}
                                 </option>
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label for="message-text" class="col-form-label">Ciudad:</label><br>
-                            <select class="form-control" [(ngModel)]="selectedCiudad" name="ciudad">
+                            <label for="message-text" class="col-form-label">Ciudad:</label>
+                            <select class="form-control" [(ngModel)]="selectedCiudad" name="idciudad">
                                 <option selected>Seleccionar Ciudad</option>
-                                <option *ngFor="let ciudad of ciudadI" [ngValue]="ciudad">
-                                    {{ciudad.ciudaddsc}}
+                                <option *ngFor="let idciudad of ciudadI" [ngValue]="idciudad">
+                                    {{idciudad.ciudaddsc}}
                                 </option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label for="message-text" class="col-form-label">Canal:</label>
-                            <select class="form-control" [(ngModel)]="selectedCanal" name="canal">
+                            <select class="form-control" [(ngModel)]="selectedCanal" name="idcanal">
                                 <option selected>Seleccionar Canal</option>
-                                <option *ngFor="let canal of canalI" [ngValue]="canal">
-                                    {{canal.canaldsc}}
+                                <option *ngFor="let idcanal of canalI" [ngValue]="idcanal">
+                                    {{idcanal.canaldsc}}
                                 </option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label for="message-text" class="col-form-label">Region:</label>
-                            <select class="form-control" [(ngModel)]="selectedRegion" name="region">
+                            <select class="form-control" [(ngModel)]="selectedRegion" name="idregion">
                                 <option selected>Seleccionar Region</option>
-                                <option *ngFor="let region of regionI" [ngValue]="region">
-                                    {{region.regiondsc}}
+                                <option *ngFor="let idregion of regionI" [ngValue]="idregion">
+                                    {{idregion.regiondsc}}
                                 </option>
                             </select>
                         </div>
@@ -419,8 +419,8 @@
                             <input type="text" class="form-control" name="calle" [(ngModel)]="this.tiendaservice.selectedTienda.calle">
                         </div>
                         <div class="col-md-6">
-                            <label for="Colonia" class="col-form-label">Colonia:</label>
-                            <input type="text" class="form-control" name="Colonia" [(ngModel)]="this.tiendaservice.selectedTienda.colonia">
+                            <label for="colonia" class="col-form-label">Colonia:</label>
+                            <input type="text" class="form-control" name="colonia" [(ngModel)]="this.tiendaservice.selectedTienda.colonia">
                         </div>
                         <div class="col-md-6">
                             <label for="cp" class="col-form-label">CP:</label>
@@ -443,7 +443,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
