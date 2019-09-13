@@ -56,6 +56,21 @@ export class TiendaService {
     }));
   }
 
+  /** modal rutas */
+  getAllTienda(){
+    /** se asigna el resultado a la variable tiendas */
+    return this.tiendas = this.tiendaCollection.snapshotChanges()
+    .pipe(map(changes => {
+      /** recupera el id de cada dato */
+      return changes.map(action => {
+        const data = action.payload.doc.data() as TiendaInterface;
+        data.idT = action.payload.doc.id;
+        return data;
+        /** se filtra los resultados de la tabla */
+      })
+    }));
+  }
+
   /** funcion para agregar tienda */
   addTienda(tienda: TiendaInterface): void {
     /** se asignan los valores de las tabla foranea */

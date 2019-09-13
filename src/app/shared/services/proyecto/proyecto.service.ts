@@ -54,6 +54,20 @@ export class ProyectoService {
     }));
   }
 
+  getAllProyecto(){
+    /** se asigna el resultado a la variable proyectos */
+    return this.proyectos = this.proyectoCollection.snapshotChanges()
+    .pipe(map(changes => {
+      /** recupera el id de cada dato */
+      return changes.map(action => {
+        const data = action.payload.doc.data() as ProyectoInterface;
+        data.idP = action.payload.doc.id;
+        return data;
+        /** se filtra los resultados de la tabla */
+      })
+    }));
+  }
+
   /** funcion para agregar proyecto */
   addProyecto(proyecto: ProyectoInterface): void {
     /** se asignan los valores de las tabla foranea */

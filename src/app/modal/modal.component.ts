@@ -45,6 +45,14 @@ import { TiendaService } from '../shared/services/tiendas/tienda.service';
 import { TiendaInterface } from '../models/tienda';
 import { StringifyOptions } from 'querystring';
 
+/** Ruta  */
+import { RutaService } from '../shared/services/rutas/ruta.service';
+import { RutaInterface } from '../models/rutas';
+
+/** Usuario */
+import { AuthService } from '../shared/services/auth.service';
+import { User } from "../shared/services/user";
+
 
 @Component({
   selector: 'app-modal',
@@ -64,7 +72,9 @@ export class ModalComponent implements OnInit {
     private estadoservice: EstadoService,
     private ciudadservice: CiudadService,
     private regionservice: RegionService,
-    private tiendaservice: TiendaService) {}
+    private tiendaservice: TiendaService,
+    private rutaservice: RutaService
+    ) {}
 
     private canalI: CanalInterface[];
     private cadenaI: CadenaInterface[];
@@ -72,6 +82,9 @@ export class ModalComponent implements OnInit {
     private estadoI: EstadoInterface[];
     private ciudadI: CiudadInterface[];
     private regionI: RegionInterface[];
+    private proyectoI: ProyectoInterface[];
+    private rutaI: RutaInterface[];
+    private tiendaI: TiendaInterface[];
 
     public selectedCanal: any = 'Seleccionar Canal';
     public selectedCadena: any = 'Seleccionar Cadena';
@@ -79,6 +92,9 @@ export class ModalComponent implements OnInit {
     public selectedEstado: any = 'Seleccionar Estado';
     public selectedCiudad: any = 'Seleccionar Ciudad';
     public selectedRegion: any = 'Seleccionar Region';
+
+    public selectedProyecto: any = 'Seleccionar Proyecto';
+    public selectedTienda: any = 'Seleccionar Tienda';
 
     public cadenaid: string;
     public cadenadsc: string;
@@ -92,13 +108,17 @@ export class ModalComponent implements OnInit {
     public canaldsc: string;
     public regionid: string;
     public regiondsc: string;
-    public tienda: [];
+    public sucursal: string;
+    public calle: string;
+    public colonia: string;
+    public cp: string;
+
+    public proyectodsc: string;
+    public idproyecto: string;
 
   ngOnInit() {
-    this.getListCanal();
-    this.getListCadenas();
-    this.getListEstado();
-    this.getListRegion();
+    this.getListTienda();
+    this.getListProyecto();
   }
 
   //corporativo
@@ -258,6 +278,58 @@ export class ModalComponent implements OnInit {
     
   }
 
+  //ruta
+  onSaveRuta(rutaForm: NgForm): void {
+    let tiendaF = rutaForm.value.idtienda;
+    let proyectoF = rutaForm.value.idproyecto;
+
+    this.cadenaid = tiendaF.idcadena;
+    this.cadenadsc = tiendaF.cadenadsc;
+    this.formatoid = tiendaF.idformato;
+    this.formatodsc = tiendaF.formatodsc;
+    this.estadoid = tiendaF.idestado;
+    this.estadodsc = tiendaF.estadodsc;
+    this.ciudadid = tiendaF.idciudad;
+    this.ciudaddsc = tiendaF.ciudaddsc;
+    this.canalid = tiendaF.idcanal;
+    this.canaldsc = tiendaF.canaldsc;
+    this.regionid = tiendaF.idregion;
+    this.regiondsc = tiendaF.regiondsc;
+    this.sucursal = tiendaF.sucursal;
+    this.calle = tiendaF.calle;
+    this.colonia = tiendaF.colonia;
+    this.cp = tiendaF.cp;
+    this.idproyecto = proyectoF.idP;
+    this.proyectodsc = proyectoF.proyectodsc;
+
+    rutaForm.value.idcadena = this.cadenaid;
+    rutaForm.value.cadenadsc = this.cadenadsc;
+    rutaForm.value.idformato = this.formatoid;
+    rutaForm.value.formatodsc = this.formatodsc;
+    rutaForm.value.idestado = this.estadoid;
+    rutaForm.value.estadodsc = this.estadodsc;
+    rutaForm.value.idciudad = this.ciudadid;
+    rutaForm.value.ciudaddsc = this.ciudaddsc;
+    rutaForm.value.idcanal = this.canalid;
+    rutaForm.value.canaldsc = this.canaldsc;
+    rutaForm.value.idregion = this.regionid;
+    rutaForm.value.regiondsc = this.regiondsc;
+    rutaForm.value.sucursal = this.sucursal;
+    rutaForm.value.calle = this.calle;
+    rutaForm.value.colonia = this.colonia;
+    rutaForm.value.cp = this.cp;
+    rutaForm.value.proyectodsc = this.proyectodsc;
+    rutaForm.value.idproyecto = this.idproyecto;
+
+    if (rutaForm.value.idR == null){
+      //guardar
+      this.rutaservice.addRuta(rutaForm.value);
+    }else {
+      //modificar
+      this.rutaservice.updateRuta(rutaForm.value);
+    }
+  }
+
   //select
   getListCanal(){
     this.canalservice.getAllCanales().subscribe( response  => {
@@ -294,4 +366,17 @@ export class ModalComponent implements OnInit {
       this.regionI = response;
     })
   };
+
+  getListProyecto(){
+    this.proyectoservice.getAllProyecto().subscribe(response => {
+      this.proyectoI = response;
+    })
+  }
+
+  getListTienda(){
+    this.tiendaservice.getAllTienda().subscribe(response => {
+      this.tiendaI = response;
+    })
+  }
+
 }

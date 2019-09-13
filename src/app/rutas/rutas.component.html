@@ -1,0 +1,72 @@
+<div class="loading" lang="en" data-textdirection="ltr" id="html">
+        <div class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns" id="body">
+            <app-nav></app-nav>
+            <div class="app-content content">
+                <div class="content-wrapper">
+                    <div class="content-wrapper-before"></div>
+                    <div class="content-header row">
+                        <div class="content-header-left col-md-4 col-12 mb-2">
+                            <h3 class="content-header-title">juan@controlplus.mx</h3>
+                        </div>
+                    </div>
+                    <div class="content-body">
+                        <section id="global-settings" class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Rutas</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#ModalRutas">Agregar</button>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead><!--class="thead-dark"-->
+                                                <tr>
+                                                    <th scope="col" >#</th>
+                                                    <th scope="col">Proyecto</th>
+                                                    <th scope="col">Usuario</th>
+                                                    <th scope="col">Canal</th>
+                                                    <th scope="col">Cadena</th>
+                                                    <th scope="col">Formato</th>
+                                                    <th scope="col">Sucursal</th>
+                                                    <th scope="col">Estado</th>
+                                                    <th scope="col">Ciudad</th>
+                                                    <th scope="col">Calle</th>
+                                                    <th scope="col">Colonia</th>
+                                                    <th scope="col">CP</th>
+                                                    <th scope="col">Fecha Inicio</th>
+                                                    <th scope="col">Activo</th>
+                                                    <th colspan="2" scope="col">Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let ru of rutaI"> 
+                                                    <th scope="row">{{ru.idR}}</th>
+                                                    <td>{{ru.proyectodsc}}</td>
+                                                    <td>{{ru.email}}</td>
+                                                    <td>{{ru.canaldsc}}</td>
+                                                    <td>{{ru.cadenadsc}}</td>
+                                                    <td>{{ru.formatodsc}}</td>
+                                                    <td>{{ru.sucursal}}</td>
+                                                    <td>{{ru.estadodsc}}</td>
+                                                    <td>{{ru.ciudaddsc}}</td>
+                                                    <td>{{ru.calle}}</td>
+                                                    <td>{{ru.colonia}}</td>
+                                                    <td>{{ru.cp}}</td>
+                                                    <td>{{ru.fechainicio}}</td>
+                                                    <td>{{ru.activo}}</td>
+                                                    <td><button class="btn btn-primary" (click)=onPreUpdateRuta(ru) data-toggle="modal" data-target="#ModalRutas">Editar</button></td>
+                                                    <td><button class="btn btn-danger" (click)="onDeleteRuta(ru.idR)">Eliminar</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-modal></app-modal>

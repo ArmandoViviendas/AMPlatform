@@ -23,7 +23,7 @@ import { EstadoComponent } from './estado/estado.component';
 import { CiudadComponent } from './ciudad/ciudad.component';
 import { RegionComponent } from './region/region.component';
 import { TiendaComponent } from './tienda/tienda.component';
-
+import { RutasComponent } from './rutas/rutas.component';
 import { MetricasProComponent} from './metricas-pro/metricas-pro.component';
 
 
@@ -46,7 +46,8 @@ const routes: Routes = [
   {path: 'Estado', component:EstadoComponent},
   {path: 'Ciudad', component:CiudadComponent},
   {path: 'Region', component:RegionComponent},
-  {path: 'Tienda', component:TiendaComponent}
+  {path: 'Tienda', component:TiendaComponent},
+  {path: 'Rutas', component:RutasComponent}
 ];
 
 @NgModule({
