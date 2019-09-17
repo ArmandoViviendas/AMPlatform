@@ -238,6 +238,7 @@ export class ModalComponent implements OnInit {
 
   //Tienda
   onSaveTienda(tiendaForm: NgForm): void {
+    /** se extrae la informacion del array */
     let cadenaF = tiendaForm.value.idcadena;
     let formatoF = tiendaForm.value.idformato;
     let estadoF = tiendaForm.value.idestado;
@@ -245,6 +246,7 @@ export class ModalComponent implements OnInit {
     let canalF = tiendaForm.value.idcanal;
     let regionF = tiendaForm.value.idregion;
 
+    /** se asigna a las variables */
     this.cadenaid = cadenaF.idcadena;
     this.cadenadsc = cadenaF.cadenadsc;
     this.formatoid = formatoF.idformato;
@@ -258,6 +260,7 @@ export class ModalComponent implements OnInit {
     this.regionid = regionF.idregion;
     this.regiondsc = regionF.regiondsc;
 
+    /** se crea el array para mandar a la base */
     tiendaForm.value.idcadena = this.cadenaid;
     tiendaForm.value.cadenadsc = this.cadenadsc;
     tiendaForm.value.idformato = this.formatoid;
@@ -283,9 +286,11 @@ export class ModalComponent implements OnInit {
 
   //ruta
   onSaveRuta(rutaForm: NgForm): void {
+    /** se extrae la informacion del array general */
     let tiendaF = rutaForm.value.idtienda;
     let proyectoF = rutaForm.value.idproyecto;
 
+    /** se asigna a las variables */
     this.idtienda = tiendaF.idT;
     this.cadenaid = tiendaF.idcadena;
     this.cadenadsc = tiendaF.cadenadsc;
@@ -306,6 +311,7 @@ export class ModalComponent implements OnInit {
     this.idproyecto = proyectoF.idP;
     this.proyectodsc = proyectoF.proyectodsc;
 
+    /** se crea el array para mandar al servicio */
     rutaForm.value.idcadena = this.cadenaid;
     rutaForm.value.cadenadsc = this.cadenadsc;
     rutaForm.value.idformato = this.formatoid;
@@ -336,8 +342,8 @@ export class ModalComponent implements OnInit {
     }
   }
 
-  public payload = [];
-
+  /** se obtienen los dias del calendario */
+  public payload = []
   verifyRange(days: Date[]){
     this.payload = days;
   }

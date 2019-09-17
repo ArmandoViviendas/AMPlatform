@@ -3,6 +3,7 @@ import { RutaService } from  '../shared/services/rutas/ruta.service';
 import { RutaInterface } from '../models/rutas';
 import { NgForm } from '@angular/forms';
 
+/** importar el calendario */
 import { IgxCalendarComponent } from 'igniteui-angular';
 
 @Component({
