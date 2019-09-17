@@ -1,5 +1,5 @@
 import { BrowserModule, ɵINTERNAL_BROWSER_PLATFORM_PROVIDERS } from '@angular/platform-browser';
-import { ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core'; //Permite usar los componentes de bootstrap
 
@@ -13,9 +13,9 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { NavComponent} from './nav/nav.component';
-import { LoginComponent} from './login/login.component';
-import { DashboardComponent} from './dashboard/dashboard.component';
+import { NavComponent } from './nav/nav.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { PersonalComponent } from './personal/personal.component';
 import { EditarPersonalComponent } from './editar-personal/editar-personal.component';
 
@@ -24,7 +24,6 @@ import { MarcasComponent } from './marcas/marcas.component';
 import { MarcasFormComponent } from './marcas-form/marcas-form.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ProductosFormComponent } from './productos-form/productos-form.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MetricasComponent } from './metricas/metricas.component';
 import { MetricasFormComponent } from './metricas-form/metricas-form.component';
 
@@ -44,6 +43,9 @@ import { RegionComponent } from './region/region.component';
 import { TiendaComponent } from './tienda/tienda.component';
 import { MetricasProFormComponent } from './metricas-pro-form/metricas-pro-form.component';
 import { RutasComponent } from './rutas/rutas.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IgxCalendarModule } from 'igniteui-angular';
 
 @NgModule({
   declarations: [
@@ -84,10 +86,13 @@ import { RutasComponent } from './rutas/rutas.component';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModalModule
+    NgbModalModule,
+    BrowserAnimationsModule,
+    IgxCalendarModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
-  entryComponents: [MarcasFormComponent,ProductosFormComponent,MetricasFormComponent,MetricasProFormComponent],
+  entryComponents: [MarcasFormComponent, ProductosFormComponent, MetricasFormComponent, MetricasProFormComponent],
 })
-export class AppModule { }
+export class AppModule {
+}

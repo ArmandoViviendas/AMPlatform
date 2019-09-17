@@ -484,7 +484,11 @@
 
                         <div class="form-group">
                             <label for="payload" class="col-form-label">Dias:</label>
-                            <input type="text" class="form-control" name="payload" [(ngModel)]="this.rutaservice.selectedRuta.payload">
+                            <igx-calendar selection="multi"
+                            [locale]="string"
+                            (onSelection)="verifyRange($event)">
+                            </igx-calendar>
+                            <input type="text" name="payload" [(ngModel)]="this.rutaservice.selectedRuta.payload" hidden>
                         
                             <label for="fechainicio" class="col-form-label">Fecha Inicio:</label>
                             <input type="date" class="form-control" name="fechainicio" [(ngModel)]="this.rutaservice.selectedRuta.fechainicio">

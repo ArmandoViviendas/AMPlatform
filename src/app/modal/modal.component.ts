@@ -53,6 +53,7 @@ import { RutaInterface } from '../models/rutas';
 import { AuthService } from '../shared/services/auth.service';
 import { User } from "../shared/services/user";
 
+import { IgxCalendarComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-modal',
@@ -115,6 +116,8 @@ export class ModalComponent implements OnInit {
 
     public proyectodsc: string;
     public idproyecto: string;
+
+    public idtienda: string;
 
   ngOnInit() {
     this.getListTienda();
@@ -283,6 +286,7 @@ export class ModalComponent implements OnInit {
     let tiendaF = rutaForm.value.idtienda;
     let proyectoF = rutaForm.value.idproyecto;
 
+    this.idtienda = tiendaF.idT;
     this.cadenaid = tiendaF.idcadena;
     this.cadenadsc = tiendaF.cadenadsc;
     this.formatoid = tiendaF.idformato;
@@ -314,12 +318,14 @@ export class ModalComponent implements OnInit {
     rutaForm.value.canaldsc = this.canaldsc;
     rutaForm.value.idregion = this.regionid;
     rutaForm.value.regiondsc = this.regiondsc;
+    rutaForm.value.idtienda = this.idtienda;
     rutaForm.value.sucursal = this.sucursal;
     rutaForm.value.calle = this.calle;
     rutaForm.value.colonia = this.colonia;
     rutaForm.value.cp = this.cp;
     rutaForm.value.proyectodsc = this.proyectodsc;
     rutaForm.value.idproyecto = this.idproyecto;
+    rutaForm.value.payload = this.payload;
 
     if (rutaForm.value.idR == null){
       //guardar
@@ -328,6 +334,12 @@ export class ModalComponent implements OnInit {
       //modificar
       this.rutaservice.updateRuta(rutaForm.value);
     }
+  }
+
+  public payload = [];
+
+  verifyRange(days: Date[]){
+    this.payload = days;
   }
 
   //select
